@@ -17,7 +17,7 @@ public class Alohandes {
 
         pp = PersistenciaAlohandes.getInstance();
 
-    }
+    } 
 
     public void cerrarUnidadPersistencia() {
         pp.cerrarUnidadPersistencia();
