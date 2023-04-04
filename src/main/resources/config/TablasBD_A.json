@@ -1,0 +1,18 @@
+{
+	"title": "Nombres de las tablas de Parranderos Uniandes para la aplicación A",
+	"unidadPersistencia": "Alohandes",
+	"tablas":
+	[
+		"Alohandes_sequence",
+		"PersonaNatural",
+		"Empresa",
+		"PropietarioInmueble",
+		"SujetoComunidad",
+		"Hotel",
+		"Hostal",
+		"Contrato",
+		"Inmueble",
+		"Habitacion",
+		"ServicioH"
+	]
+}
