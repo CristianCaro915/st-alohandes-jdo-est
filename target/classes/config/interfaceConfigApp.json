@@ -5,52 +5,32 @@
 	"bannerPath": "./src/main/resources/config/logo.png",
 	"menuBar":
 	[
-		{ "menuTitle": "TipoBebida",
+		{ "menuTitle": "Iniciar Sesión",
 		  "options":
 			[
 				{
-					"label": "Adicionar",
-					"event": "adicionarTipoBebida"
+					"label": "Inscribirse como cliente",
+					"event": "darClientePorCorreoContrasenia"
 				},
 				{
-					"label": "Listar",
-					"event": "listarTipoBebida"
-				},
-				{
-					"label": "Borrar por Id",
-					"event": "eliminarTipoBebidaPorId"
-				},
-				{
-					"label": "Buscar por Nombre",
-					"event": "buscarTipoBebidaPorNombre"
+					"label": "Inscribirse como admin",
+					"event": "darClientePorCorreoContrasenia"
 				}
 			]
 		},
-		{ "menuTitle": "Mantenimiento",
-		  "options":
-			[
-				{
-					"label": "Mostrar log Parranderos",
-					"event": "mostrarLogParranderos"
-				},
-				{
-					"label": "Mostrar log datanucleus",
-					"event": "mostrarLogDatanuecleus"
-				},
-				{
-					"label": "Limpiar log de parranderos",
-					"event": "limpiarLogParranderos"
-				},
-				{
-					"label": "Limpiar log de datanucleus",
-					"event": "limpiarLogDatanucleus"
-				},
-				{
-					"label": "Limpiar Base de Datos",
-					"event": "limpiarBD"
-				}
-			]
-		},		
+		{ "menuTitle": "Registrarse",
+		"options":
+		  [
+			  {
+				  "label": "Registrar",
+				  "event": "adicionarCliente"
+			  },
+			  {
+				  "label": "Iniciar Sesión",
+				  "event": "adicionarCliente"
+			  }
+		  ]
+	  },
 		{ "menuTitle": "Documentación",
 		  "options":
 			[

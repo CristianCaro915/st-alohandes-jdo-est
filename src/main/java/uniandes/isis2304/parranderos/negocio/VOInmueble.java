@@ -10,12 +10,7 @@ public interface VOInmueble {
 
     public int getCostoAdmin();
 
-    public int getDisponibilidad();
-
     public int getNumHabitaciones();
 
-    public Long getId_propietario();
-
-    public Long Get_id_sujetoComunidad();
-
+    public Long getIdOferta();
 }

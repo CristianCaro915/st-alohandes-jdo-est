@@ -2,7 +2,7 @@ package uniandes.isis2304.parranderos.negocio;
 
 public interface VOHabitacion {
 
-    public long getNumHabitacion();
+    public long getIdHabitacion();
 
     public int getTamano();
 
@@ -12,12 +12,10 @@ public interface VOHabitacion {
 
     public String getUbicacion();
 
-    public long getHostalID();
+    public long getIdOferta();
 
-    public long getHotelId();
+    public long getIdContrato();
 
-    public long getContratoId();
-
-    public long getInmuebleId();
+    public long getIdInmueble();
 
 }

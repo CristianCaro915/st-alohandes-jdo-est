@@ -1,6 +1,5 @@
 package uniandes.isis2304.parranderos.negocio;
-
-import oracle.sql.DATE;
+import java.sql.Timestamp;
 
 public interface VOSeguro {
 
@@ -8,9 +7,9 @@ public interface VOSeguro {
 
     public String getDescripcion();
 
-    public Long getId_inmueble();
+    public Long getIdInmueble();
 
-    public DATE getFechaVence();
+    public Timestamp getFechaVence();
 
 
 

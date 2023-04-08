@@ -16,10 +16,10 @@ class SQLEmpresa{
     public SQLEmpresa(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarEmpresa (PersistenceManager pm, long id, String nombreE) 
+    public long adicionarEmpresa (PersistenceManager pm, long id, String nombreE, String tipo) 
     {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaEmpresa() + "(ID_E, NOMBRE) values (?, ?)");
-        q.setParameters(id, nombreE);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaEmpresa() + "(ID_E, NOMBRE, TIPO) values (?, ?, ?)");
+        q.setParameters(id, nombreE, tipo);
         return (long) q.executeUnique();
     }
     public long eliminarEmpresaPorNombre (PersistenceManager pm, String nombreE)

@@ -1,6 +1,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -15,10 +15,10 @@ class SQLHostal {
     public SQLHostal(PersistenciaAlohandes pp) {
         this.pp = pp;
     }
-    public long adicionarHostal(PersistenceManager pm, long id, String nombre, int recepcion, Date Apertura,Date Cierre) {
+    public long adicionarHostal(PersistenceManager pm, long id, String nombre, int recepcion, Timestamp Apertura,Timestamp Cierre,String tipo) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHostal()
-                + "(ID_S, NOMBRE, RECEPCION, HORACIERRE, HORAAPERTURA) values (?, ?, ?, ?, ?)");
-        q.setParameters(id, nombre, recepcion, Cierre, Apertura);
+                + "(ID_S, NOMBRE, RECEPCION, HORACIERRE, HORAAPERTURA,TIPO) values (?, ?, ?, ?, ?,?)");
+        q.setParameters(id, nombre, recepcion, Cierre, Apertura, tipo);
         return (long) q.executeUnique();
     }
     public long eliminarHostalPorNombre(PersistenceManager pm, String nombreHostal) {

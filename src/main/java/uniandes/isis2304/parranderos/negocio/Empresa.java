@@ -1,33 +1,36 @@
 package uniandes.isis2304.parranderos.negocio;
 
-public class Empresa implements VOEmpresa{
-    private Long id;
-    private String Nombre;
+public class Empresa implements VOEmpresa {
+    private long id_E;
+    private String nombre;
+    private String tipo;
 
-    public Empresa(Long id, String Nombre) {
-        this.id = id;
-        this.Nombre = Nombre;
+    public Empresa(long id_E, String nombre, String tipo) {
+        this.id_E = id_E;
+        this.nombre = nombre;
+        this.tipo = tipo;
     }
-
     public Empresa() {
-        this.id = (long) 0;
-        this.Nombre = "";
+        this.id_E = (long) 0;
+        this.nombre = "";
+        this.tipo = "";
     }
-
-    public Long getId() {
-        return id;
+    public String getTipo() {
+        return tipo;
     }
-
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    public long getId() {
+        return id_E;
+    }
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(long id_E) {
+        this.id_E = id_E;
     }
-
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
-
 }

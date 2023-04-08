@@ -14,9 +14,9 @@ class SQLHotel {
     public SQLHotel(PersistenciaAlohandes pp) {
         this.pp = pp;
     }
-    public long adicionarHotel(PersistenceManager pm, long idH, String nombre) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHotel() + "(ID_HT, NOMBRE) values (?,?)");
-        q.setParameters(idH, nombre);
+    public long adicionarHotel(PersistenceManager pm, long idH, String nombre, String tipo) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHotel() + "(ID_HT, NOMBRE, TIPO) values (?,?,?)");
+        q.setParameters(idH, nombre,tipo);
         return (long) q.executeUnique();
     }
     public long eliminarHotelPorNombre(PersistenceManager pm, String nombreHotel) {
