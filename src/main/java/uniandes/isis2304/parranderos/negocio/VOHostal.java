@@ -1,12 +1,12 @@
 package uniandes.isis2304.parranderos.negocio;
-
-import java.util.Date;
+import java.sql.Timestamp;
 
 public interface VOHostal {
     public long getId();
     public String getNombre();
+    public String getTipo();
     public int getRecepcion();
-    public Date getCierre();
-    public Date getApertura();
+    public Timestamp getCierre();
+    public Timestamp getApertura();
 
 }

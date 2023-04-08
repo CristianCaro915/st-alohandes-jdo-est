@@ -5,7 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import oracle.sql.DATE;
+import java.sql.Timestamp;
 import uniandes.isis2304.parranderos.negocio.Contrato;
 
 public class SQLContrato {
@@ -16,13 +16,11 @@ public class SQLContrato {
     public SQLContrato(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarContrato(PersistenceManager pm, Long id, String tipoContrato, DATE fechaInicio, int duracion,
-            int duracionPrePaid,int precioEspecial, int precioFinal, DATE fechaPagoMensualidad,
-            Long EmpresaID, Long PersonaNaturalID, Long PropietarioId_inmueble) {
+    public long adicionarContrato(PersistenceManager pm, Long id, String tipoContrato, int duracion, int duracionPrePaid,
+            int precioEspecial, int precioFinal, Timestamp fechaInicio, int fechaPago,long id_Oferta) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaContrato()
-                + "(ID_C, TIPOCONTRATO, DURACION,  DURACIONPREPAID,  PRECIOESPECIAL, PRECIOFINAL,FECHAINICIO,  FECHAPAGOMENSUAL, ID_EMPRESA,  ID_PERSONANATUAL,  ID_PROPIETARIOI)values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, tipoContrato, duracion, duracionPrePaid,precioEspecial, precioFinal, fechaInicio,
-         fechaPagoMensualidad, EmpresaID, PersonaNaturalID, PropietarioId_inmueble);
+                + "(ID_C, TIPOCONTRATO, DURACION,  DURACIONPREPAID,  PRECIOESPECIAL, PRECIOFINAL,FECHAINICIO,  FECHAPAGO,  ID_OFERTA)values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(id, tipoContrato, duracion, duracionPrePaid,precioEspecial, precioFinal, fechaInicio,fechaPago, id_Oferta);
         return (long) q.executeUnique();
     }
     public long eliminarContratoPorId(PersistenceManager pm, long idContrato) {

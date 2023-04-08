@@ -16,10 +16,10 @@ public class SQLInmueble {
     public SQLInmueble(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarInmueble (PersistenceManager pm, long id, String tipoI, String ubicacion, int costoAdmin, int disponibilidad, int numHabitaciones, long idPropietarioI, long idSujetoC) 
+    public long adicionarInmueble (PersistenceManager pm, long id, String tipoI, String ubicacion, int costoAdmin, int numHabitaciones, long id_Oferta) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaInmueble () + "(ID_I, TIPOI, UBICACION, COSTOADMIN, DISPONIBILIDAD, NUMHABITACIONES, ID_PROPIETARIOI,ID_SUJETOC) values (?,?,?,?,?,?,?)");
-        q.setParameters(id, tipoI, ubicacion, costoAdmin, disponibilidad, numHabitaciones, idPropietarioI,idSujetoC);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaInmueble () + "(ID_I, TIPOI, UBICACION, COSTOADMIN, NUMHABITACIONES, ID_OFERTA) values (?,?,?,?,?)");
+        q.setParameters(id, tipoI, ubicacion, costoAdmin, numHabitaciones, id_Oferta);
         return (long) q.executeUnique();
 	}
     public long eliminarInmueblePorId (PersistenceManager pm, long idI)

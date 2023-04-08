@@ -1,0 +1,153 @@
+{
+	"title": "Aplicación transaccional de Parranderos Uniandes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "",
+	"menuBar":
+	[
+        { "menuTitle": "Persona Natural",
+        "options":
+          [
+              {
+                  "label": "Adicionar",
+                  "event": "adicionarPersonaNatural"
+              },
+              {
+                "label": "Eliminar",
+                "event": "eliminarPersonaNatural"
+            }
+          ]
+        },
+        {"menuTitle": "Empresa",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarEmpresa"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarEmpresa" 
+            }
+        ]
+        },
+        {"menuTitle": "Propietario Inmueble",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarPropietarioInmueble"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarPropietarioInmueble" 
+            }
+        ]
+        },
+        {"menuTitle": "Sujeto Comunidad",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarSujetoComunidad"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarSujetoComunidad" 
+            }
+        ]
+        },
+        {"menuTitle": "Hotel",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarHotel"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarHotel" 
+            }
+        ]
+        },
+        {"menuTitle": "Hostal",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarHostal"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarHostal" 
+            }
+        ]
+        },
+        {"menuTitle": "Contrato",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarContrato"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarContrato" 
+            }
+        ]
+        },
+        {"menuTitle": "Inmueble",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarInmueble"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarInmueble" 
+            }
+        ]
+        },
+        {"menuTitle": "Seguro",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarSeguro"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarSeguro" 
+            }
+        ]
+        },
+        {"menuTitle": "Habitacion",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarHabitacion"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarHabitacion" 
+            }
+        ]
+        },
+        {"menuTitle": "Servicios",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarServicioH"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarServicioH" 
+            }
+        ]
+        }	
+	]
+}
+	

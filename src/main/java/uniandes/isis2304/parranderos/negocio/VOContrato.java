@@ -1,14 +1,13 @@
 package uniandes.isis2304.parranderos.negocio;
-
-import oracle.sql.DATE;
+import java.sql.Timestamp;
 
 public interface VOContrato {
 
-    public Long getId();
+    public long getId();
 
     public String getTipoContrato();
 
-    public DATE getFechaInicio();
+    public Timestamp getFechaInicio();
 
     public int getDuracion();
 
@@ -18,12 +17,7 @@ public interface VOContrato {
 
     public int getPrecioFinal();
 
-    public DATE getFechaPagoMensualidad();
+    public int getFechaPago();
 
-    public Long getEmpresaID();
-
-    public Long getPersonaNaturalID();
-
-    public Long getPropietarioId_inmueble();
-
+    public long getIdOferta();
 }

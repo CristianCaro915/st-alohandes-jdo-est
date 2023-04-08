@@ -1,139 +1,97 @@
 package uniandes.isis2304.parranderos.negocio;
-
-import oracle.sql.DATE;
+import java.sql.Timestamp;
 
 public class Contrato implements VOContrato {
 
-    private Long id;
+    private long id_C;
     private String tipoContrato;
-    private DATE fechaInicio;
+    private Timestamp fechaInicio;
     private int duracion;
     private int duracionPrePaid;
     private int precioEspecial;
     private int precioFinal;
-    private DATE fechaPagoMensualidad;
-    private Long EmpresaID;
-    private Long PersonaNaturalID;
-    private Long PropietarioId_inmueble;
+    private int fechaPago;
+    private long id_Oferta;
 
-    public Contrato(Long id, String tipoContrato, DATE fechaInicio, int duracion, int duracionPrePaid,
-            int precioEspecial, int precioFinal, DATE fechaPagoMensualidad,
-            Long EmpresaID, Long PersonaNaturalID, Long PropietarioId_inmueble) {
+    public Contrato(long id_C, String tipoContrato, int duracion, int duracionPrePaid,
+            int precioEspecial, int precioFinal, Timestamp fechaInicio,int fechaPago, long id_Oferta) {
 
-        this.id = id;
+        this.id_C = id_C;
         this.tipoContrato = tipoContrato;
         this.fechaInicio = fechaInicio;
         this.duracion = duracion;
         this.duracionPrePaid = duracionPrePaid;
         this.precioEspecial = precioEspecial;
         this.precioFinal = precioFinal;
-        this.fechaPagoMensualidad = fechaPagoMensualidad;
-        this.EmpresaID = EmpresaID;
-        this.PersonaNaturalID = PersonaNaturalID;
-        this.PropietarioId_inmueble = PropietarioId_inmueble;
+        this.fechaPago = fechaPago;
+        this.id_Oferta=id_Oferta;
     }
 
     public Contrato() {
 
-        this.id = 0L;
+        this.id_C = 0L;
         this.tipoContrato = "";
         this.fechaInicio = null;
         this.duracion = 0;
         this.duracionPrePaid = 0;
         this.precioEspecial = 0;
         this.precioFinal = 0;
-        this.fechaPagoMensualidad = null;
-        this.EmpresaID = (long) 0;
-        this.PersonaNaturalID = (long) 0;
-        this.PropietarioId_inmueble = (long) 0;
+        this.fechaPago = 0;
+        this.id_Oferta = (long) 0;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(long id_C) {
+        this.id_C = id_C;
     }
-
     public void setTipoContrato(String tipoContrato) {
         this.tipoContrato = tipoContrato;
     }
-
-    public void setFechaInicio(DATE fechaInicio) {
+    public void setFechaInicio(Timestamp fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
-
     public void setDuracionPrePaid(int duracionPrePaid) {
         this.duracionPrePaid = duracionPrePaid;
     }
-
     public void setPrecioEspecial(int precioEspecial) {
         this.precioEspecial = precioEspecial;
     }
-
     public void setPrecioFinal(int precioFinal) {
         this.precioFinal = precioFinal;
     }
-
-    public void setFechaPagoMensualidad(DATE fechaPagoMensualidad) {
-        this.fechaPagoMensualidad = fechaPagoMensualidad;
+    public void setFechaPago(int fechaPago) {
+        this.fechaPago = fechaPago;
     }
+    public void setIdOferta(long id_Oferta){
 
-    public void setEmpresaID(Long empresaID) {
-        EmpresaID = empresaID;
     }
-
-    public void setPersonaNaturalID(Long personaNaturalID) {
-        PersonaNaturalID = personaNaturalID;
+    public long getId() {
+        return id_C;
     }
-
-    public void setPropietarioId_inmueble(Long propietarioId_inmueble) {
-        PropietarioId_inmueble = propietarioId_inmueble;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     public String getTipoContrato() {
         return tipoContrato;
     }
-
-    public DATE getFechaInicio() {
+    public Timestamp getFechaInicio() {
         return fechaInicio;
     }
-
     public int getDuracion() {
         return duracion;
     }
-
     public int getDuracionPrePaid() {
         return duracionPrePaid;
     }
-
     public int getPrecioEspecial() {
         return precioEspecial;
     }
-
     public int getPrecioFinal() {
         return precioFinal;
     }
-
-    public DATE getFechaPagoMensualidad() {
-        return fechaPagoMensualidad;
+    public int getFechaPago() {
+        return fechaPago;
     }
-
-    public Long getEmpresaID() {
-        return EmpresaID;
+    public long getIdOferta() {
+        return id_Oferta;
     }
-
-    public Long getPersonaNaturalID() {
-        return PersonaNaturalID;
-    }
-
-    public Long getPropietarioId_inmueble() {
-        return PropietarioId_inmueble;
-    }
-
 }

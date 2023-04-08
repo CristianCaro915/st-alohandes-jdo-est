@@ -1,0 +1,49 @@
+{
+	"title": "Aplicación transaccional de Parranderos Uniandes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "",
+	"menuBar":
+	[
+		{ "menuTitle": "Habitaciones",
+		  "options":
+			[
+				{
+					"label": "Oferta hoteles",
+					"event": "adicionarTipoBebida"
+				},
+				{
+					"label": "Oferta hostales",
+					"event": "listarTipoBebida"
+				}
+			]
+		},
+        { "menuTitle": "Inmuebles",
+        "options":
+          [
+              {
+                  "label": "Oferta Propietario Inmueble",
+                  "event": "adicionarTipoBebida"
+              },
+              {
+                  "label": "Oferta hostales",
+                  "event": "listarTipoBebida"
+              }
+          ]
+      },
+      { "menuTitle": "Búsqueda",
+      "options":
+        [
+            {
+                "label": "Oferta hoteles",
+                "event": "adicionarTipoBebida"
+            },
+            {
+                "label": "Oferta hostales",
+                "event": "listarTipoBebida"
+            }
+        ]
+    }
+	]
+}
+	

@@ -14,13 +14,11 @@ class SQLHabitacion {
         this.pp = pp;
     }
 
-    public long adicionarHabitacion(PersistenceManager pm, long numHabitacion, int tamano, String tipoH, int precioFinal,
-            String ubicacion, long hostalID,
-            long hotelId, long contratoId, long inmuebleId) {
+    public long adicionarHabitacion(PersistenceManager pm, long id_H, int tamano, String tipoH, int precioFinal,
+            String ubicacion, long id_Oferta, long id_Contrato, long id_Inmueble) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHabitacion()
-                + "(NUMHABITACION, TAMANIO, TIPOH, PRECIOFINAL, UBICACION,ID_HOSTAL,ID_HOTEL,ID_CONTRATO,ID_INMUEBLE) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(numHabitacion, tamano, tipoH, precioFinal, ubicacion, hostalID, hotelId, contratoId,
-                inmuebleId);
+                + "(ID_H, TAMANIO, TIPOH, PRECIOFINAL, UBICACION,ID_OFERTA,ID_CONTRATO,ID_INMUEBLE) values (?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(id_H, tamano, tipoH, precioFinal, ubicacion, id_Oferta,id_Contrato,id_Inmueble);
         return (long) q.executeUnique();
     }
     public long eliminarHabitacionPorId(PersistenceManager pm, long idHabitacion) {

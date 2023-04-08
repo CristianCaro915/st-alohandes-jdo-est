@@ -5,7 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import oracle.sql.DATE;
+import java.sql.Timestamp;
 import uniandes.isis2304.parranderos.negocio.Seguro;
 
 public class SQLSeguro {
@@ -17,13 +17,13 @@ public class SQLSeguro {
     public SQLSeguro(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarSeguro (PersistenceManager pm, long id, DATE fechaVence, String descripcion,long id_inmueble) 
+    public long adicionarSeguro (PersistenceManager pm, long id, Timestamp fechaVence, String descripcion,long id_inmueble) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSeguro () + "(ID_S, FECHAVENCE, DESCRIPCION, ID_INMUEBLE) values (?, ?, ?, ?)");
         q.setParameters(id, fechaVence, descripcion, id_inmueble);
         return (long) q.executeUnique();
 	}
-    public long eliminarSeguroPorFecha (PersistenceManager pm, DATE fechaVence) //REVISARR !!!!!!!!!!!!!
+    public long eliminarSeguroPorFecha (PersistenceManager pm, Timestamp fechaVence) //REVISARR !!!!!!!!!!!!!
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSeguro () + " WHERE FECHAVENCE = ?");
         q.setParameters(fechaVence);
@@ -42,7 +42,7 @@ public class SQLSeguro {
 		q.setParameters(idS);
 		return (Seguro) q.executeUnique();
 	}
-    public List<Seguro> darSegurosPorFecha (PersistenceManager pm, DATE fechaVence) //REVISAR !!!!!!!
+    public List<Seguro> darSegurosPorFecha (PersistenceManager pm, Timestamp fechaVence) //REVISAR !!!!!!!
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaSeguro () + " WHERE FECHAVENCE = ?");
 		q.setResultClass(Seguro.class);

@@ -10,6 +10,6 @@ public interface VOServicioH {
 
     public int getCantidad();
 
-    public String getNombreS();
+    public String getNombre();
 
 }

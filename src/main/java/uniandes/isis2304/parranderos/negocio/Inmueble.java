@@ -2,90 +2,56 @@ package uniandes.isis2304.parranderos.negocio;
 
 public class Inmueble implements VOInmueble{
 
-    private Long id;
-    private String TipoI;
-    private String Ubicacion;
+    private Long id_I;
+    private String tipoI;
+    private String ubicacion;
     private int costoAdmin;
-    private int disponibilidad;
     private int numHabitaciones;
-    private Long id_propietario;
-    private Long id_sujetoComunidad;
+    private Long id_Oferta;
 
-    public Inmueble(Long id, String TipoI, String Ubicacion, int costoAdmin, int disponibilidad,
-            int numHabitaciones, Long id_propietario, Long id_sujetoComunidad) {
-        this.id = id;
-        this.TipoI = TipoI;
-        this.Ubicacion = Ubicacion;
+    public Inmueble(Long id_I, String tipoI, String ubicacion, int costoAdmin,
+            int numHabitaciones, Long id_Oferta) {
+        this.id_I = id_I;
+        this.tipoI = tipoI;
+        this.ubicacion = ubicacion;
         this.costoAdmin = costoAdmin;
-        this.disponibilidad = disponibilidad;
         this.numHabitaciones = numHabitaciones;
-        this.id_propietario = id_propietario;
-        this.id_sujetoComunidad = id_sujetoComunidad;
+        this.id_Oferta = id_Oferta;
     }
-
     public Long getId() {
-        return id;
+        return id_I;
     }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long id_I) {
+        this.id_I = id_I;
     }
-
     public String getTipoI() {
-        return TipoI;
+        return tipoI;
     }
-
-    public void setTipoI(String TipoI) {
-        this.TipoI = TipoI;
+    public void setTipoI(String tipoI) {
+        this.tipoI = tipoI;
     }
-
     public String getUbicacion() {
-        return Ubicacion;
+        return ubicacion;
     }
-
-    public void setUbicacion(String Ubicacion) {
-        this.Ubicacion = Ubicacion;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
-
     public int getCostoAdmin() {
         return costoAdmin;
     }
-
     public void setCostoAdmin(int costoAdmin) {
         this.costoAdmin = costoAdmin;
     }
-
-    public int getDisponibilidad() {
-        return disponibilidad;
-    }
-
-    public void setDisponibilidad(int disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-
     public int getNumHabitaciones() {
         return numHabitaciones;
     }
-
     public void setNumHabitaciones(int numHabitaciones) {
         this.numHabitaciones = numHabitaciones;
     }
-
-    public Long getId_propietario() {
-        return id_propietario;
+    public Long getIdOferta() {
+        return id_Oferta;
     }
-
-    public void setId_propietario(Long id_propietario) {
-        this.id_propietario = id_propietario;
+    public void setIdOferta(Long id_Oferta) {
+        this.id_Oferta = id_Oferta;
     }
-
-    public Long Get_id_sujetoComunidad() {
-        return id_sujetoComunidad;
-    }
-
-    public void Get_id_sujetoComunidad(Long id_com) {
-        this.id_sujetoComunidad = id_com;
-
-    }
-
 }

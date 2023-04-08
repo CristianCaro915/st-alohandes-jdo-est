@@ -5,7 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import uniandes.isis2304.parranderos.negocio.Brinda;
+import uniandes.isis2304.parranderos.negocio.Brindan;
 
 public class SQLBrindan {
     
@@ -15,51 +15,44 @@ public class SQLBrindan {
     public SQLBrindan(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarBrindan (PersistenceManager pm, long idHabitacion, long idServicioH) 
+    public long adicionarBrindan (PersistenceManager pm, long idHabitacion, long idServicio) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBrindan () + "(ID_HABITACION, ID_SERVICIOH) values (?, ?)");
-        q.setParameters(idHabitacion, idServicioH);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaBrindan () + "(ID_HABITACION, ID_SERVICIO) values (?, ?)");
+        q.setParameters(idHabitacion, idServicio);
         return (long) q.executeUnique();
 	}
-    public long eliminarBrindanPorids (PersistenceManager pm, long idHabitacion, long idServicioH) 
+    public long eliminarBrindanPorids (PersistenceManager pm, long idHabitacion, long idServicio) 
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBrindan () + " WHERE ID_HABITACION = ? AND ID_SERVICIOH = ?");
-        q.setParameters(idHabitacion,idServicioH);
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBrindan () + " WHERE ID_HABITACION = ? AND ID_SERVICIO = ?");
+        q.setParameters(idHabitacion,idServicio);
         return (long) q.executeUnique();
 	}
-    public Brinda darBrindanPorIds (PersistenceManager pm, long idHabitacion, long idServicioH) 
+    public Brindan darBrindanPorIds (PersistenceManager pm, long idHabitacion, long idServicioH) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBrindan () + " WHERE ID_HABITACION = ? AND ID_SERVICIOH = ?");
-		q.setResultClass(Brinda.class);
+		q.setResultClass(Brindan.class);
 		q.setParameters(idHabitacion,idServicioH);
-		return (Brinda) q.executeUnique();
+		return (Brindan) q.executeUnique();
 	}
-    public List<Brinda> darBrindanPoridHabitacion (PersistenceManager pm, long idHabitacion) 
+    public List<Brindan> darBrindanPoridHabitacion (PersistenceManager pm, long idHabitacion) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBrindan () + " WHERE ID_HABITACION = ?");
-		q.setResultClass(Brinda.class);
+		q.setResultClass(Brindan.class);
 		q.setParameters(idHabitacion);
-		return (List<Brinda>) q.executeList();
+		return (List<Brindan>) q.executeList();
 	}
-    public List<Brinda> darBrindanPoridServicioH (PersistenceManager pm, long idServicioH) 
+    public List<Brindan> darBrindanPoridServicioH (PersistenceManager pm, long idServicioH) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBrindan () + " WHERE ID_SERVICIOH = ?");
-		q.setResultClass(Brinda.class);
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBrindan () + " WHERE ID_SERVICIO = ?");
+		q.setResultClass(Brindan.class);
 		q.setParameters(idServicioH);
-		return (List<Brinda>) q.executeList();
+		return (List<Brindan>) q.executeList();
 	}
-    public List<Brinda> darBrindanPorIdMueble (PersistenceManager pm, long idMueble) 
-	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBrindan() + " WHERE ID_INMUEBLE = ?");
-		q.setResultClass(Brinda.class);
-		q.setParameters(idMueble);
-		return (List<Brinda>) q.executeList();
-	}
-    public List<Brinda> darBrindan (PersistenceManager pm)
+    public List<Brindan> darBrindan (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaBrindan ());
-		q.setResultClass(Brinda.class);
-		return (List<Brinda>) q.executeList();
+		q.setResultClass(Brindan.class);
+		return (List<Brindan>) q.executeList();
 	}
 }
 

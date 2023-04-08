@@ -16,10 +16,10 @@ class SQLPropietarioInmueble{
     public SQLPropietarioInmueble(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-        public long adicionarPropietarioInmueble (PersistenceManager pm, long id, String nombre, String vinculo) 
+        public long adicionarPropietarioInmueble (PersistenceManager pm, long id, String nombre, String vinculo, String tipo) 
     {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPropietarioInmueble () + "(ID_PI, NOMBRE, VINCULO) values (?, ?, ?)");
-        q.setParameters(id, nombre, vinculo);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaPropietarioInmueble () + "(ID_PI, NOMBRE, VINCULO, TIPO) values (?, ?, ?, ?)");
+        q.setParameters(id, nombre, vinculo, tipo);
         return (long) q.executeUnique();
     }
     public long eliminarPropietarioInmueble (PersistenceManager pm, String nombrePI)
