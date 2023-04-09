@@ -5,29 +5,29 @@
 	"bannerPath": "",
 	"menuBar":
 	[
-        { "menuTitle": "Persona Natural",
+        { "menuTitle": "Hotel",
         "options":
           [
               {
                   "label": "Adicionar",
-                  "event": "adicionarPersonaNatural"
+                  "event": "adicionarHotel"
               },
               {
                 "label": "Eliminar",
-                "event": "eliminarPersonaNatural"
+                "event": "eliminarHotel"
             }
           ]
         },
-        {"menuTitle": "Empresa",
+        {"menuTitle": "Hostal",
         "options":
         [
             {
                 "label" : "Adicionar",
-                "event" : "adicionarEmpresa"
+                "event" : "adicionarHostal"
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarEmpresa" 
+                "event" : "eliminarHostal" 
             }
         ]
         },
@@ -44,55 +44,16 @@
             }
         ]
         },
-        {"menuTitle": "Sujeto Comunidad",
+        {"menuTitle": "Oferta",
         "options":
         [
             {
                 "label" : "Adicionar",
-                "event" : "adicionarSujetoComunidad"
+                "event" : "adicionarOferta"
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarSujetoComunidad" 
-            }
-        ]
-        },
-        {"menuTitle": "Hotel",
-        "options":
-        [
-            {
-                "label" : "Adicionar",
-                "event" : "adicionarHotel"
-            },
-            {
-                "label" : "Eliminar",
-                "event" : "eliminarHotel" 
-            }
-        ]
-        },
-        {"menuTitle": "Hostal",
-        "options":
-        [
-            {
-                "label" : "Adicionar",
-                "event" : "adicionarHostal"
-            },
-            {
-                "label" : "Eliminar",
-                "event" : "eliminarHostal" 
-            }
-        ]
-        },
-        {"menuTitle": "Contrato",
-        "options":
-        [
-            {
-                "label" : "Adicionar",
-                "event" : "adicionarContrato"
-            },
-            {
-                "label" : "Eliminar",
-                "event" : "eliminarContrato" 
+                "event" : "eliminarOferta" 
             }
         ]
         },
@@ -109,19 +70,6 @@
             }
         ]
         },
-        {"menuTitle": "Seguro",
-        "options":
-        [
-            {
-                "label" : "Adicionar",
-                "event" : "adicionarSeguro"
-            },
-            {
-                "label" : "Eliminar",
-                "event" : "eliminarSeguro" 
-            }
-        ]
-        },
         {"menuTitle": "Habitacion",
         "options":
         [
@@ -135,19 +83,58 @@
             }
         ]
         },
-        {"menuTitle": "Servicios",
+        {"menuTitle": "Servicio",
         "options":
         [
             {
                 "label" : "Adicionar",
-                "event" : "adicionarServicioH"
+                "event" : "adicionarServicio"
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarServicioH" 
+                "event" : "eliminarServicio" 
             }
         ]
-        }	
+        },
+        {"menuTitle": "Contrato",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarContrato"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarContrato" 
+            }
+        ]
+        },
+        {"menuTitle": "Seguro",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarSeguro"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarSeguro" 
+            }
+        ]
+        },
+        {"menuTitle": "Cliente",
+        "options":
+        [
+            {
+                "label" : "Adicionar",
+                "event" : "adicionarCliente"
+            },
+            {
+                "label" : "Eliminar",
+                "event" : "eliminarCliente" 
+            }
+        ]
+        }
 	]
 }
 	

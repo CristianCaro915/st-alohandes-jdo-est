@@ -478,7 +478,7 @@ public class PersistenciaAlohandes {
 	{
 		return sqlHotel.darHoteles(pmf.getPersistenceManager());
 	}
-    public List<Hotel> darHotelesPorNombre (String nombre)
+    public Hotel darHotelPorNombre (String nombre)
 	{
 		return sqlHotel.darHotelPorNombre(pmf.getPersistenceManager(), nombre);
 	}
