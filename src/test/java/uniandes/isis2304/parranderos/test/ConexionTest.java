@@ -15,21 +15,16 @@
 
 package uniandes.isis2304.parranderos.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.Assert.fail;
 import java.io.FileReader;
-import java.util.List;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
-import uniandes.isis2304.parranderos.negocio.Parranderos;
-import uniandes.isis2304.parranderos.negocio.VOTipoBebida;
+import uniandes.isis2304.parranderos.negocio.Alohandes;
 
 /**
  * Clase con métodos de prueba de conexión a la base de datos
@@ -77,7 +72,7 @@ public class ConexionTest
 	/**
 	 * La clase que se quiere probar
 	 */
-    private Parranderos parranderos;
+    private Alohandes alohandes;
 	
 	/* ****************************************************************
 	 * 			Métodos de prueba de acceso a la BD
@@ -91,11 +86,11 @@ public class ConexionTest
   	  	try
 		{
 			log.info ("Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_A));
+			alohandes = new Alohandes (openConfig (CONFIG_TABLAS_A));
 			log.info ("Conexión realizada correstamente");
 			log.info ("Cerrando la conexión");
 			
-			parranderos.cerrarUnidadPersistencia ();
+			alohandes.cerrarUnidadPersistencia ();
 			log.info ("Conexión cerrada");
 		}
 		catch (Exception e)
@@ -122,7 +117,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con una base de datos que no existe");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_ERR_DS));
+			alohandes = new Alohandes (openConfig (CONFIG_TABLAS_ERR_DS));
 			fail ("Debería fallar. La base de datos no existe !!");
 		}
 		catch (Exception e)
@@ -147,7 +142,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con datos de usuario incorrectos");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_ERR_USER));
+			alohandes = new Alohandes (openConfig (CONFIG_TABLAS_ERR_USER));
 			fail ("Debería fallar. Las credenciales del usuario no son válidas");
 		}
 		catch (Exception e)
@@ -173,7 +168,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con datos de usuario correctos, pero sin crear el esquema");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_B));
+			alohandes = new Alohandes (openConfig (CONFIG_TABLAS_B));
 		}
 		catch (Exception e)
 		{
@@ -190,7 +185,7 @@ public class ConexionTest
 		// Ahora si se puede probar si la tabla existe o no...
 		try
 		{
-			parranderos.darTiposBebida ();
+			//alohandes.darTiposBebida ();
 			fail ("Debería fallar. La tabla consultada no existe en la BD");
 		}
 		catch (Exception e)
@@ -205,8 +200,8 @@ public class ConexionTest
 		}
 		finally
 		{
-			parranderos.limpiarParranderos ();
-    		parranderos.cerrarUnidadPersistencia ();    		
+			//alohandes.limpiarParranderos ();
+    		alohandes.cerrarUnidadPersistencia ();    		
 		}
     }
 

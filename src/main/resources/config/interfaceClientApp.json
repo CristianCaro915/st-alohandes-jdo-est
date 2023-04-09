@@ -5,45 +5,70 @@
 	"bannerPath": "",
 	"menuBar":
 	[
-		{ "menuTitle": "Habitaciones",
+		{ "menuTitle": "Hoteles",
 		  "options":
 			[
 				{
-					"label": "Oferta hoteles",
-					"event": "adicionarTipoBebida"
+					"label": "Ver catálogo",
+					"event": "darHoteles"
 				},
 				{
-					"label": "Oferta hostales",
-					"event": "listarTipoBebida"
+					"label": "Ver por nombre",
+					"event": "darHotelPorNombre"
 				}
 			]
 		},
-        { "menuTitle": "Inmuebles",
-        "options":
+        { "menuTitle": "Hostales",
+          "options":
           [
               {
-                  "label": "Oferta Propietario Inmueble",
-                  "event": "adicionarTipoBebida"
+                  "label": "Ver catálogo",
+                  "event": "darHostales"
               },
               {
-                  "label": "Oferta hostales",
-                  "event": "listarTipoBebida"
+                  "label": "Hostales con recepción",
+                  "event": "darHostalesPorRecepcion"
               }
           ]
       },
-      { "menuTitle": "Búsqueda",
-      "options":
+      { "menuTitle": "Inmuebles",
+        "options":
         [
             {
-                "label": "Oferta hoteles",
-                "event": "adicionarTipoBebida"
+                "label": "Ver apartamentos",
+                "event": "darInmueblesPorTipo"
             },
             {
-                "label": "Oferta hostales",
-                "event": "listarTipoBebida"
+                "label": "Ver viviendas",
+                "event": "darInmueblesPorTipo"
+            },
+            {
+                "label":"Ver por ubicacion",
+                "event":"darInmueblesPorUbicacion"
+            },
+            {
+                "label":"Ver por cantidad de habitaciones",
+                "event":"darInmueblesPorNumHabitaciones"
             }
         ]
-    }
+      },
+      { "menuTitle": "Habitaciones",
+        "options":
+        [
+            {
+                "label": "Ver catálogo",
+                "event": "darHabitaciones"
+            },
+            {
+                "label": "Ver por precio",
+                "event": "darHabitacionesPorPrecio"
+            },
+            {
+                "label":"Ver por tipo ",
+                "event":"darHabitacionesPorTipo"
+            }
+        ]
+      }
 	]
 }
 	

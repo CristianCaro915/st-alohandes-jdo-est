@@ -30,11 +30,11 @@ class SQLHotel {
         q.setParameters(idHotel);
         return (long) q.executeUnique();
     }
-    public List<Hotel> darHotelPorNombre(PersistenceManager pm, String nombreHotel) {
+    public Hotel darHotelPorNombre(PersistenceManager pm, String nombreHotel) {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaHotel() + " WHERE NOMBRE = ?");
         q.setResultClass(Hotel.class);
         q.setParameters(nombreHotel);
-        return (List<Hotel>) q.executeList();
+        return (Hotel) q.executeList();
     }
     public List<Hotel> darHoteles(PersistenceManager pm) {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaHotel());

@@ -45,12 +45,6 @@ public class Alohandes {
         log.info("Eliminando Hotel por Id: " + resp + " tuplas eliminadas");
         return resp;
     }
-    public List<Hotel> darHotelesPorNombre(String nombre) {
-        log.info("Dar información de Hoteles por nombre: " + nombre);
-        List<Hotel> hotels = pp.darHotelesPorNombre(nombre);
-        log.info("Dar información de Hoteles por nombre: " + hotels.size() + " Hoteles con ese nombre existentes");
-        return hotels;
-    }
     /*   REVISAR
     public List<VOHotel> darVOHotel ()
 	{
@@ -63,12 +57,12 @@ public class Alohandes {
         log.info ("Generando los VO de los Hoteles: " + vohotel.size() + " existentes");
         return vohotel;
 	} */
-    public List<Hotel> darHotelPorNombre(String nombre) {
-        log.info("Dar información de Hoteles por nombre: " + nombre);
-        List<Hotel> hoteles = pp.darHotelesPorNombre(nombre);
-        log.info("Dar información de Hoteles por nombre: " + hoteles.size()
+    public Hotel darHotelPorNombre(String nombre) {
+        log.info("Dar información de Hotel por nombre: " + nombre);
+        Hotel hotel = pp.darHotelPorNombre(nombre);
+        log.info("Dar información de Hotel por nombre: " + hotel
                 + " Hotel con ese nombre existentes");
-        return hoteles;
+        return hotel;
     }
     public List<Hotel> darHoteles() {
         log.info("Listando  Hoteles");
@@ -155,7 +149,7 @@ public class Alohandes {
         return hab;
     }
                                         /* SERVICIO */
-    public Servicio adicionarservH(int precio, int incluido, int cantidad, String nombre) {
+    public Servicio adicionarservicio(int precio, int incluido, int cantidad, String nombre) {
         log.info("Adicionando servicio " + nombre);
         Servicio resp = pp.adicionarServicio(precio, incluido, cantidad, nombre);
         log.info("Adicionando servicio por nombre: " + resp);
@@ -380,6 +374,20 @@ public class Alohandes {
       }
 
     /* SEGURO */
+    public Seguro adicionarSeguro(Timestamp fechaVence, String descripcion, long id_Inmueble) 
+    {
+    log.info("Adicionando seguro : " + fechaVence);
+    Seguro seguro = pp.adicionarSeguro(fechaVence, descripcion, id_Inmueble);
+    log.info("Adicionando seguro: " + seguro);
+    return seguro;
+    }
+    public long eliminarSeguroPorId (long idI)
+	{
+        log.info ("Eliminando seguro por id: " + idI);
+        long resp = pp.eliminarSeguroPorId(idI);
+        log.info ("Eliminando seguro por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
     /* CLIENTE */
     public Cliente adicionarCliente(String nombre, String correo, String contrasenia) 
     {
@@ -395,8 +403,43 @@ public class Alohandes {
         log.info ("Buscando Cliente por correo: " + correo != null ? correo : "NO EXISTE");
         return cliente;
 	}
+    public long eliminarClientePorId (long idI)
+	{
+        log.info ("Eliminando Cliente por id: " + idI);
+        long resp = pp.eliminarClientePorId(idI);
+        log.info ("Eliminando Cliente por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
     /* OFERTA */
+    public Oferta adicionarOferta(int reservado, long id_Cliente, long id_PropietarioI, long id_Empresa, long id_Hostal, long id_Hotel) 
+    {
+    log.info("Adicionando oferta : ");
+    Oferta oferta = pp.adicionarOferta(reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
+    log.info("Adicionando oferta: " + oferta);
+    return oferta;
+    }
+    public long eliminarOfertaPorId (long idI)
+	{
+        log.info ("Eliminando oferta por id: " + idI);
+        long resp = pp.eliminarOfertaPorId(idI);
+        log.info ("Eliminando oferta por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
     /* BRINDAN */
+    public Brindan adicionarBrindan(long id_Habitacion, long id_Servicio) 
+    {
+    log.info("Adicionando brindan : " + id_Habitacion +" "+id_Servicio);
+    Brindan brindan = pp.adicionarBrindan(id_Habitacion, id_Servicio);
+    log.info("Adicionando brindan: " + brindan);
+    return brindan;
+    }
+    public long eliminarBrindanPorIds (long id_Habitacion, long id_Servicio)
+	{
+        log.info ("Eliminando Brindan por id: " + id_Habitacion +" "+id_Servicio);
+        long resp = pp.eliminarBrindanPorIds(id_Habitacion, id_Servicio);
+        log.info ("Eliminando Brindan por id: " + resp + " tuplas eliminadas");
+        return resp;
+	}
 
     public long [] limpiarAlohandes ()
 	{
