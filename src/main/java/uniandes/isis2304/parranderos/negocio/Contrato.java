@@ -1,9 +1,10 @@
 package uniandes.isis2304.parranderos.negocio;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Contrato implements VOContrato {
 
-    private long id_C;
+    private BigDecimal id_C;
     private String tipoContrato;
     private Timestamp fechaInicio;
     private int duracion;
@@ -11,10 +12,10 @@ public class Contrato implements VOContrato {
     private int precioEspecial;
     private int precioFinal;
     private int fechaPago;
-    private long id_Oferta;
+    private BigDecimal id_Oferta;
 
-    public Contrato(long id_C, String tipoContrato, int duracion, int duracionPrePaid,
-            int precioEspecial, int precioFinal, Timestamp fechaInicio,int fechaPago, long id_Oferta) {
+    public Contrato(BigDecimal id_C, String tipoContrato, int duracion, int duracionPrePaid,
+            int precioEspecial, int precioFinal, Timestamp fechaInicio,int fechaPago, BigDecimal id_Oferta) {
 
         this.id_C = id_C;
         this.tipoContrato = tipoContrato;
@@ -29,7 +30,7 @@ public class Contrato implements VOContrato {
 
     public Contrato() {
 
-        this.id_C = 0L;
+        this.id_C = new BigDecimal(0);
         this.tipoContrato = "";
         this.fechaInicio = null;
         this.duracion = 0;
@@ -37,10 +38,10 @@ public class Contrato implements VOContrato {
         this.precioEspecial = 0;
         this.precioFinal = 0;
         this.fechaPago = 0;
-        this.id_Oferta = (long) 0;
+        this.id_Oferta = new BigDecimal(0);
     }
 
-    public void setId(long id_C) {
+    public void setId(BigDecimal id_C) {
         this.id_C = id_C;
     }
     public void setTipoContrato(String tipoContrato) {
@@ -64,10 +65,10 @@ public class Contrato implements VOContrato {
     public void setFechaPago(int fechaPago) {
         this.fechaPago = fechaPago;
     }
-    public void setIdOferta(long id_Oferta){
+    public void setIdOferta(BigDecimal id_Oferta){
 
     }
-    public long getId() {
+    public BigDecimal getId() {
         return id_C;
     }
     public String getTipoContrato() {
@@ -91,7 +92,7 @@ public class Contrato implements VOContrato {
     public int getFechaPago() {
         return fechaPago;
     }
-    public long getIdOferta() {
+    public BigDecimal getIdOferta() {
         return id_Oferta;
     }
 }

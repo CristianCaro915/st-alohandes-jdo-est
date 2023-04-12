@@ -1,5 +1,6 @@
 package uniandes.isis2304.parranderos.persistencia;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -16,48 +17,48 @@ public class SQLServicio {
     public SQLServicio(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarServicioH (PersistenceManager pm, long id, int precio, int incluido, int cantidad, String nombre) 
+    public long adicionarServicio (PersistenceManager pm, BigDecimal ID_SH, int PRECIO, int INCLUIDO, int CANTIDAD, String NOMBRE) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicioH () + "(ID_SH, PRECIO, INCLUIDO, CANTIDAD,NOMBRE) values (?,?,?,?,?)");
-        q.setParameters(id, precio, incluido, cantidad,nombre);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicio () + "(ID_SH, PRECIO, INCLUIDO, CANTIDAD,NOMBRE) values (?,?,?,?,?)");
+        q.setParameters(ID_SH, PRECIO, INCLUIDO, CANTIDAD,NOMBRE);
         return (long) q.executeUnique();
 	}
-    public long eliminarServicioHPorNombre (PersistenceManager pm, String nombreSH)
+    public long eliminarServicioPorNombre (PersistenceManager pm, String NOMBRE)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicioH () + " WHERE NOMBRE = ?");
-        q.setParameters(nombreSH);
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicio () + " WHERE NOMBRE = ?");
+        q.setParameters(NOMBRE);
         return (long) q.executeUnique();
 	}
-    public long eliminarServicioHPorId (PersistenceManager pm, long idSH)
+    public long eliminarServicioPorId (PersistenceManager pm, long ID_SH)
 	{
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicioH () + " WHERE ID_SH = ?");
-        q.setParameters(idSH);
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicio () + " WHERE ID_SH = ?");
+        q.setParameters(ID_SH);
         return (long) q.executeUnique();
 	}
-    public Servicio darServicioHPorId (PersistenceManager pm, long idSH) 
+    public Servicio darServicioPorId (PersistenceManager pm, long ID_SH) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicioH () + " WHERE ID_S = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicio () + " WHERE ID_SH = ?");
 		q.setResultClass(Servicio.class);
-		q.setParameters(idSH);
+		q.setParameters(ID_SH);
 		return (Servicio) q.executeUnique();
 	}
-    public Servicio darServicioHPorNombre (PersistenceManager pm, String nombreSH) 
+    public Servicio darServicioPorNombre (PersistenceManager pm, String NOMBRE) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicioH () + " WHERE NOMBRE = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicio () + " WHERE NOMBRE = ?");
 		q.setResultClass(Servicio.class);
-		q.setParameters(nombreSH);
+		q.setParameters(NOMBRE);
 		return (Servicio) q.executeUnique();
 	}
-    public List<Servicio> darServiciosHPorInclusion (PersistenceManager pm, int incluido)
+    public List<Servicio> darServiciosPorInclusion (PersistenceManager pm, int INCLUIDO)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicioH () + " WHERE INCLUIDO = ?");
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicio () + " WHERE INCLUIDO = ?");
 		q.setResultClass(Servicio.class);
-		q.setParameters(incluido);
+		q.setParameters(INCLUIDO);
 		return (List<Servicio>) q.executeList();
 	}
-    public List<Servicio> darServiciosH (PersistenceManager pm)
+    public List<Servicio> darServicios (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicioH());
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicio());
 		q.setResultClass(Servicio.class);
 		return (List<Servicio>) q.executeList();
 	}   

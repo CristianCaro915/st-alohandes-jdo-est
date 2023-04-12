@@ -1,29 +1,31 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public class Habitacion implements VOHabitacion{
 
-    private long id_H;
+    private BigDecimal id_H;
     private int tamano;
     private String tipoH;
     private int precioFinal;
     private String ubicacion;
-    private long id_Oferta;
-    private long id_Contrato;
-    private long id_Inmueble;
+    private BigDecimal id_Oferta;
+    private BigDecimal id_Contrato;
+    private BigDecimal id_Inmueble;
 
     public Habitacion() {
-        this.id_H = 0;
+        this.id_H = new BigDecimal(0);
         this.tamano = 0;
         this.tipoH = "";
         this.precioFinal = 0;
         this.ubicacion = "";
-        this.id_Oferta = 0;
-        this.id_Contrato = 0;
-        this.id_Inmueble = 0;
+        this.id_Oferta = new BigDecimal(0);
+        this.id_Contrato = new BigDecimal(0);
+        this.id_Inmueble = new BigDecimal(0);
     }
 
-    public Habitacion(long id_H, int tamano, String tipoH, int precioFinal, String ubicacion, 
-    long id_Oferta, long id_Contrato, long id_Inmueble) {
+    public Habitacion(BigDecimal id_H, int tamano, String tipoH, int precioFinal, String ubicacion, 
+    BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) {
         this.id_H = id_H;
         this.tamano = tamano;
         this.tipoH = tipoH;
@@ -33,10 +35,10 @@ public class Habitacion implements VOHabitacion{
         this.id_Contrato = id_Contrato;
         this.id_Inmueble = id_Inmueble;
     }
-    public long getIdHabitacion() {
+    public BigDecimal getIdHabitacion() {
         return id_H;
     }
-    public void seIdHabiacion(long id_H) {
+    public void seIdHabiacion(BigDecimal id_H) {
         this.id_H = id_H;
     }
     public int getTamano() {
@@ -63,22 +65,22 @@ public class Habitacion implements VOHabitacion{
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    public long getIdOferta() {
+    public BigDecimal getIdOferta() {
         return id_Oferta;
     }
-    public void setIdOferta(long id_Oferta) {
+    public void setIdOferta(BigDecimal id_Oferta) {
         this.id_Oferta = id_Oferta;
     }
-    public long getIdContrato() {
+    public BigDecimal getIdContrato() {
         return id_Contrato;
     }
-    public void setIdContrato(long id_Contrato) {
+    public void setIdContrato(BigDecimal id_Contrato) {
         this.id_Contrato = id_Contrato;
     }
-    public long getIdInmueble() {
+    public BigDecimal getIdInmueble() {
         return id_Inmueble;
     }
-    public void setIdInmueble(long id_Inmueble) {
+    public void setIdInmueble(BigDecimal id_Inmueble) {
         this.id_Inmueble=id_Inmueble;
     }
 
