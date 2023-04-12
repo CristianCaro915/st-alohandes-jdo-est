@@ -1,12 +1,14 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public interface VOOferta {
 
-    public Long getId();
+    public BigDecimal getId();
     public int getReservado();
-    public long getIdCliente();
-    public long getIdPropietario();
-    public long getIdEmpresa();
-    public long getIdHostal();
-    public long getIdHotel();
+    public BigDecimal getIdCliente();
+    public BigDecimal getIdPropietario();
+    public BigDecimal getIdEmpresa();
+    public BigDecimal getIdHostal();
+    public BigDecimal getIdHotel();
 }

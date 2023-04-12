@@ -4,15 +4,17 @@
 	"tablas":
 	[
 		"Alohandes_sequence",
-		"PersonaNatural",
-		"Empresa",
-		"PropietarioInmueble",
-		"SujetoComunidad",
-		"Hotel",
-		"Hostal",
-		"Contrato",
-		"Inmueble",
-		"Habitacion",
-		"ServicioH"
+		"HOTEL",
+		"HOSTAL",
+		"PROPIETARIOINMUEBLE",
+		"EMPRESA",
+		"CLIENTE",
+		"OFERTA",
+		"CONTRATO",
+		"INMUEBLE",
+		"SEGURO",
+		"HABITACION",
+		"SERVICIO",
+		"BRINDAN"
 	]
 }

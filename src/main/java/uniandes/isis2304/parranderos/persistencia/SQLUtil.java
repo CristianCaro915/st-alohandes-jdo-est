@@ -72,7 +72,7 @@ class SQLUtil
 	/**
 	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
 	 * @param pm - El manejador de persistencia
-	 * @return Un arreglo con 7 números que indican el número de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
+	 * @return Un arreglo con 12 números que indican el número de tuplas borradas en las tablas GUSTAN, SIRVEN, VISITAN, BEBIDA,
 	 * TIPOBEBIDA, BEBEDOR y BAR, respectivamente
 	 */
 	public long [] limpiarParranderos (PersistenceManager pm)
@@ -87,7 +87,7 @@ class SQLUtil
 		Query qInmueble = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaInmueble());
 		Query qSeguro = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSeguro());
 		Query qHabitacion = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaHabitacion());
-		Query qServicio = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicioH());
+		Query qServicio = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicio());
 		Query qBrindan = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaBrindan());
 
         long hotelEliminados = (long) qHotel.executeUnique ();

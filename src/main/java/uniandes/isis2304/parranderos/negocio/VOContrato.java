@@ -1,9 +1,10 @@
 package uniandes.isis2304.parranderos.negocio;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public interface VOContrato {
 
-    public long getId();
+    public BigDecimal getId();
 
     public String getTipoContrato();
 
@@ -19,5 +20,5 @@ public interface VOContrato {
 
     public int getFechaPago();
 
-    public long getIdOferta();
+    public BigDecimal getIdOferta();
 }

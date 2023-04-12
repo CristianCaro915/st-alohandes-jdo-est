@@ -10,7 +10,7 @@
 			[
 				{
 					"label": "Ver catálogo",
-					"event": "darHoteles"
+					"event": "listarHotel"
 				},
 				{
 					"label": "Ver por nombre",
@@ -23,11 +23,7 @@
           [
               {
                   "label": "Ver catálogo",
-                  "event": "darHostales"
-              },
-              {
-                  "label": "Hostales con recepción",
-                  "event": "darHostalesPorRecepcion"
+                  "event": "listarHostal"
               }
           ]
       },
@@ -36,19 +32,11 @@
         [
             {
                 "label": "Ver apartamentos",
-                "event": "darInmueblesPorTipo"
+                "event": "listarApartamentos"
             },
             {
                 "label": "Ver viviendas",
-                "event": "darInmueblesPorTipo"
-            },
-            {
-                "label":"Ver por ubicacion",
-                "event":"darInmueblesPorUbicacion"
-            },
-            {
-                "label":"Ver por cantidad de habitaciones",
-                "event":"darInmueblesPorNumHabitaciones"
+                "event": "listarViviendas"
             }
         ]
       },
@@ -57,15 +45,7 @@
         [
             {
                 "label": "Ver catálogo",
-                "event": "darHabitaciones"
-            },
-            {
-                "label": "Ver por precio",
-                "event": "darHabitacionesPorPrecio"
-            },
-            {
-                "label":"Ver por tipo ",
-                "event":"darHabitacionesPorTipo"
+                "event": "listarHabitaciones"
             }
         ]
       }

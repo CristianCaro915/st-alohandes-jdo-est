@@ -1,8 +1,10 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public interface VOInmueble {
 
-    public Long getId();
+    public BigDecimal getId();
 
     public String getTipoI();
 
@@ -12,5 +14,5 @@ public interface VOInmueble {
 
     public int getNumHabitaciones();
 
-    public Long getIdOferta();
+    public BigDecimal getIdOferta();
 }
