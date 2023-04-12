@@ -18,7 +18,7 @@ public class SQLSeguro {
     public SQLSeguro(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarSeguro (PersistenceManager pm, BigDecimal ID_S, Timestamp FECHAVENCE, String DESCRIPCION,long ID_INMUEBLE) 
+    public long adicionarSeguro (PersistenceManager pm, BigDecimal ID_S, Timestamp FECHAVENCE, String DESCRIPCION,BigDecimal ID_INMUEBLE) 
 	{
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaSeguro () + "(ID_S, FECHAVENCE, DESCRIPCION, ID_INMUEBLE) values (?, ?, ?, ?)");
         q.setParameters(ID_S, FECHAVENCE, DESCRIPCION, ID_INMUEBLE);

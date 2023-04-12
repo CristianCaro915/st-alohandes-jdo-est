@@ -71,10 +71,10 @@ public class Alohandes {
         return voHoteles;
 	}
                                 /* HOSTAL */
-    public Hostal adicionarHostal(String nombre, int recepcion, Timestamp Apertura,
+    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, int recepcion, Timestamp Apertura,
             Timestamp Cierre, String tipo) {
         log.info("Adicionando hostal: " + nombre);
-        Hostal hostal = pp.adicionarHostal(nombre, recepcion, Cierre, Apertura, tipo);
+        Hostal hostal = pp.adicionarHostal(id_hs,nombre, recepcion, Cierre, Apertura, tipo);
         log.info("Adicionando hostal: " + hostal);
         return hostal;
     }
@@ -115,10 +115,10 @@ public class Alohandes {
         return hostales;
     }
                                 /* HABITACION */
-    public Habitacion adicionarHabitacion(int tamano, String tipoH, int precioFinal,
-            String ubicacion, long id_Oferta, long id_Contrato, long id_Inmueble) {
+    public Habitacion adicionarHabitacion(BigDecimal id_H,int tamano, String tipoH, int precioFinal,
+            String ubicacion, BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) {
         log.info("Adicionando habitacion de tipo " + tipoH);
-        Habitacion resp = pp.adicionarHabitacion(tamano, tipoH, precioFinal, ubicacion,id_Oferta,id_Contrato,id_Inmueble );
+        Habitacion resp = pp.adicionarHabitacion(id_H,tamano, tipoH, precioFinal, ubicacion,id_Oferta,id_Contrato,id_Inmueble );
         log.info("adicionando habitacion por nombre: " + resp);
         return resp;
     }
@@ -149,9 +149,9 @@ public class Alohandes {
         return hab;
     }
                                     /* SERVICIO */
-    public Servicio adicionarservicio(int precio, int incluido, int cantidad, String nombre) {
+    public Servicio adicionarservicio(BigDecimal id_sh, int precio, int incluido, int cantidad, String nombre) {
         log.info("Adicionando servicio " + nombre);
-        Servicio resp = pp.adicionarServicio(precio, incluido, cantidad, nombre);
+        Servicio resp = pp.adicionarServicio(id_sh,precio, incluido, cantidad, nombre);
         log.info("Adicionando servicio por nombre: " + resp);
         return resp;
     }
@@ -192,10 +192,10 @@ public class Alohandes {
         return servicios;
     }
                                     /* CONTRATO */
-    public Contrato adicionarContrato(String tipoContrato, Timestamp fechaInicio, int duracion, int duracionPrePaid, int precioEspecial, int precioFinal, int fechaPago, long id_Oferta)
+    public Contrato adicionarContrato(BigDecimal id_c, String tipoContrato, Timestamp fechaInicio, int duracion, int duracionPrePaid, int precioEspecial, int precioFinal, int fechaPago, BigDecimal id_Oferta)
     {
         log.info ("Adicionando contrato con fecha de inicio" + fechaInicio);
-        Contrato resp = pp.adicionarContrato(tipoContrato,fechaInicio,duracion,duracionPrePaid,precioEspecial,precioFinal,fechaPago, id_Oferta);
+        Contrato resp = pp.adicionarContrato(id_c,tipoContrato,fechaInicio,duracion,duracionPrePaid,precioEspecial,precioFinal,fechaPago, id_Oferta);
         log.info ("Adicionando contrato con fecha de inicio: " + resp );
         return resp;
     }
@@ -218,10 +218,10 @@ public class Alohandes {
         return servicios;
     }
                                     /* EMPRESA */
-    public Empresa adicionarEmpresa(String nombre, String tipo) 
+    public Empresa adicionarEmpresa(BigDecimal id_e,String nombre, String tipo) 
     {
     log.info("Adicionando empresa: " + nombre);
-    Empresa empresa = pp.adicionarEmpresa(nombre, tipo);
+    Empresa empresa = pp.adicionarEmpresa(id_e,nombre, tipo);
     log.info("Adicionando empresa: " + empresa);
     return empresa;
     }
@@ -272,10 +272,10 @@ public class Alohandes {
         return empresa;
  	}
                                     /* Propietario Inmueble */
-    public PropietarioInmueble adicionarPropietarioInmueble(String nombre, String vinculo,String tipo) 
+    public PropietarioInmueble adicionarPropietarioInmueble(BigDecimal id_pi,String nombre, String vinculo,String tipo) 
     {
     log.info("Adicionando PropietarioInmueble: " + nombre);
-    PropietarioInmueble propietarioP = pp.adicionarPropietarioInmueble(nombre,vinculo,tipo);
+    PropietarioInmueble propietarioP = pp.adicionarPropietarioInmueble(id_pi,nombre,vinculo,tipo);
     log.info("Adicionando PropietarioInmueble: " + propietarioP);
     return propietarioP;
     }
@@ -326,10 +326,10 @@ public class Alohandes {
         return propietarioInmueble;
  	}
                                     /* Inmueble */
-    public Inmueble adicionarInmueble(String tipoI, String ubicacion, int costoAdmin,int numHabitaciones,long id_Oferta) 
+    public Inmueble adicionarInmueble(BigDecimal id_i,String tipoI, String ubicacion, int costoAdmin,int numHabitaciones,BigDecimal id_Oferta) 
     {
     log.info("Adicionando Contrato de tipo: " + tipoI);
-    Inmueble inmueble = pp.adicionarInmueble(tipoI,ubicacion,costoAdmin,numHabitaciones,id_Oferta);
+    Inmueble inmueble = pp.adicionarInmueble(id_i,tipoI,ubicacion,costoAdmin,numHabitaciones,id_Oferta);
     log.info("Adicionando Contrato: " + inmueble);
     return inmueble;
     }
@@ -387,10 +387,10 @@ public class Alohandes {
         return inmuebles;
 	}
     /* SEGURO */
-    public Seguro adicionarSeguro(Timestamp fechaVence, String descripcion, long id_Inmueble) 
+    public Seguro adicionarSeguro(BigDecimal id_s,Timestamp fechaVence, String descripcion, BigDecimal id_Inmueble) 
     {
     log.info("Adicionando seguro : " + fechaVence);
-    Seguro seguro = pp.adicionarSeguro(fechaVence, descripcion, id_Inmueble);
+    Seguro seguro = pp.adicionarSeguro(id_s,fechaVence, descripcion, id_Inmueble);
     log.info("Adicionando seguro: " + seguro);
     return seguro;
     }
@@ -409,10 +409,10 @@ public class Alohandes {
         return inmuebles;
 	}
     /* CLIENTE */
-    public Cliente adicionarCliente(String nombre, String correo, String contrasenia) 
+    public Cliente adicionarCliente(BigDecimal idCl, String nombre, String correo, String contrasenia) 
     {
     log.info("Adicionando Cliente: " + nombre);
-    Cliente cliente = pp.adicionarCliente(nombre, correo, contrasenia);
+    Cliente cliente = pp.adicionarCliente(idCl,nombre, correo, contrasenia);
     log.info("Adicionando Cliente: " + cliente);
     return cliente;
     }
@@ -438,10 +438,10 @@ public class Alohandes {
         return clientes;
 	}
     /* OFERTA */
-    public Oferta adicionarOferta(int reservado, long id_Cliente, long id_PropietarioI, long id_Empresa, long id_Hostal, long id_Hotel) 
+    public Oferta adicionarOferta(BigDecimal id_O,int reservado, BigDecimal id_Cliente, BigDecimal id_PropietarioI, BigDecimal id_Empresa, BigDecimal id_Hostal, BigDecimal id_Hotel) 
     {
     log.info("Adicionando oferta : ");
-    Oferta oferta = pp.adicionarOferta(reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
+    Oferta oferta = pp.adicionarOferta(id_O,reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
     log.info("Adicionando oferta: " + oferta);
     return oferta;
     }
@@ -460,7 +460,7 @@ public class Alohandes {
         return ofertas;
 	}
     /* BRINDAN */
-    public Brindan adicionarBrindan(long id_Habitacion, long id_Servicio) 
+    public Brindan adicionarBrindan(BigDecimal id_Habitacion, BigDecimal id_Servicio) 
     {
     log.info("Adicionando brindan : " + id_Habitacion +" "+id_Servicio);
     Brindan brindan = pp.adicionarBrindan(id_Habitacion, id_Servicio);

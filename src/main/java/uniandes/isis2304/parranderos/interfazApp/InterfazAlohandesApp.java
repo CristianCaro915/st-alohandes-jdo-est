@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import javax.jdo.JDODataStoreException;
@@ -193,9 +192,12 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     		String nombreCliente = JOptionPane.showInputDialog (this, "Nombre del Cliente?", "Adicionar Cliente", JOptionPane.QUESTION_MESSAGE);
 			String correoCliente = JOptionPane.showInputDialog (this, "Correo del Cliente?", "Adicionar Cliente", JOptionPane.QUESTION_MESSAGE);
 			String contraseniaCliente = JOptionPane.showInputDialog (this, "Contrasenia del Cliente?", "Adicionar Cliente", JOptionPane.QUESTION_MESSAGE);
-    		if (nombreCliente != null && correoCliente!= null && contraseniaCliente!=null)
+			String idCliente = JOptionPane.showInputDialog (this, "id Cliente?", "Adicionar Cliente", JOptionPane.QUESTION_MESSAGE);
+    		if (nombreCliente != null && correoCliente!= null && contraseniaCliente!=null && idCliente!= null)
     		{
-        		VOCliente tb = alohandes.adicionarCliente(nombreCliente, correoCliente,contraseniaCliente);
+				long idCl = Long.parseLong(idCliente);
+				BigDecimal id_cl = BigDecimal.valueOf(idCl);
+        		VOCliente tb = alohandes.adicionarCliente(id_cl,nombreCliente, correoCliente,contraseniaCliente);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un Cliente con nombre: " + nombreCliente);
@@ -437,17 +439,20 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			String nombre = JOptionPane.showInputDialog (this, "Nombre del hostal", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
 			String tipo = JOptionPane.showInputDialog (this, "Tipo de hostal?", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
 			String recep= JOptionPane.showInputDialog (this, "Incluye recepción (1|0)", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
+			String idHostal= JOptionPane.showInputDialog (this, "Id hostal", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
 			if(recep==null){
 				recep="0";
 			}
 			int recepcion = Integer.parseInt(recep);
 			String horaClose=JOptionPane.showInputDialog (this, "Hora de cierre", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
 			String horaOpen=JOptionPane.showInputDialog (this, "Hora de apertura", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
-			if ((recepcion==0 || recepcion==1) && tipo != null && nombre != null && horaClose!=null && horaOpen!=null)
+			if ((recepcion==0 || recepcion==1) && tipo != null && nombre != null && horaClose!=null && horaOpen!=null && idHostal!=null)
 			{
+				Long id_hs=Long.valueOf(idHostal);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
 				Timestamp horaApertura=Timestamp.valueOf(horaOpen);
 				Timestamp horaCierre = Timestamp.valueOf(horaClose);
-				VOHostal tb = alohandes.adicionarHostal(nombre, recepcion, horaApertura, horaCierre, tipo);
+				VOHostal tb = alohandes.adicionarHostal(idss,nombre, recepcion, horaApertura, horaCierre, tipo);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear un hostal con nombre: " + nombre);
@@ -529,9 +534,12 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     		String nombre = JOptionPane.showInputDialog (this, "Nombre del PropietarioInmueble?", "Adicionar PropietarioInmueble", JOptionPane.QUESTION_MESSAGE);
 			String vinculo = JOptionPane.showInputDialog (this, "Vinculo del PropietarioInmueble?", "Adicionar PropietarioInmueble", JOptionPane.QUESTION_MESSAGE);
 			String tipo = JOptionPane.showInputDialog (this, "Tipo del PropietarioInmueble?", "Adicionar PropietarioInmueble", JOptionPane.QUESTION_MESSAGE);
-    		if (nombre != null && vinculo != null && tipo != null)
+    		String idPPP = JOptionPane.showInputDialog (this, "Id del PropietarioInmueble?", "Adicionar PropietarioInmueble", JOptionPane.QUESTION_MESSAGE);
+			if (nombre != null && vinculo != null && tipo != null && idPPP!=null)
     		{
-        		VOPropietarioInmueble tb = alohandes.adicionarPropietarioInmueble(nombre, vinculo, tipo);
+				Long id_hs=Long.valueOf(idPPP);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
+        		VOPropietarioInmueble tb = alohandes.adicionarPropietarioInmueble(idss,nombre, vinculo, tipo);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un PropietarioInmueble de nombre: " + nombre);
@@ -586,9 +594,12 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     	{
     		String nombreEmpresa = JOptionPane.showInputDialog (this, "Nombre de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
 			String tipoEmpresa = JOptionPane.showInputDialog (this, "Tipo de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
-    		if (nombreEmpresa != null && tipoEmpresa!= null )
+    		String idEEE = JOptionPane.showInputDialog (this, "Tipo de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
+			if (nombreEmpresa != null && tipoEmpresa!= null && idEEE!=null )
     		{
-        		VOEmpresa tb = alohandes.adicionarEmpresa(nombreEmpresa, tipoEmpresa);
+				Long id_hs=Long.valueOf(idEEE);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
+        		VOEmpresa tb = alohandes.adicionarEmpresa(idss,nombreEmpresa, tipoEmpresa);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear una Empresa con nombre: " + nombreEmpresa);
@@ -673,20 +684,59 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 				reserv="0";
 			}
 			int reservado= Integer.parseInt(reserv);
+			String idOferta = JOptionPane.showInputDialog (this, "id de la oferta?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idCliente = JOptionPane.showInputDialog (this, "id asociado al cliente?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE); 
     		String idPropietario = JOptionPane.showInputDialog (this, "id asociado al propietario inmueble?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idEmpresa = JOptionPane.showInputDialog (this, "id asociado a la empresa?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idHostal = JOptionPane.showInputDialog (this, "id asociado al hostal?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idHotel = JOptionPane.showInputDialog (this, "id asociado al hotel?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
-    		if ((reservado==1 || reservado==0) && idCliente!= null && idPropietario!=null
-			&& idEmpresa != null && idHostal!=null && idHotel!=null )
+    		if ((reservado==1 || reservado==0) && idOferta!=null && 
+			(idCliente!=null || idPropietario!=null ||idEmpresa!=null||idHostal!=null||idHotel!=null))
     		{
-				long id_Cliente =Long.parseLong(idCliente);
-				long id_PropietarioI =Long.parseLong(idPropietario);
-				long id_Empresa =Long.parseLong(idEmpresa);
-				long id_Hostal =Long.parseLong(idHostal);
-				long id_Hotel =Long.parseLong(idHotel);
-        		VOOferta tb = alohandes.adicionarOferta(reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
+				Long id_hs=Long.valueOf(idOferta);
+				BigDecimal id_Oferta=BigDecimal.valueOf(id_hs);
+				BigDecimal id_Cliente;
+				BigDecimal id_PropietarioI;
+				BigDecimal id_Empresa;
+				BigDecimal id_Hostal;
+				BigDecimal id_Hotel;
+				if(idCliente!=null){
+					Long id_hs1=Long.valueOf(idCliente);
+					id_Cliente=BigDecimal.valueOf(id_hs1);
+				}
+				else{
+					id_Cliente=new BigDecimal(0);
+				}
+				if(idPropietario!=null){
+					Long id_hs2=Long.valueOf(idPropietario);
+					id_PropietarioI=BigDecimal.valueOf(id_hs2);
+				}
+				else{
+					id_PropietarioI=new BigDecimal(0);
+				}
+				if(idEmpresa!=null){
+					Long id_hs3=Long.valueOf(idEmpresa);
+					id_Empresa=BigDecimal.valueOf(id_hs3);
+				}
+				else{
+					id_Empresa=new BigDecimal(0);
+				}
+				if(idHostal!=null){
+					Long id_hs4=Long.valueOf(idHostal);
+					id_Hostal=BigDecimal.valueOf(id_hs4);
+				}
+				else{
+					id_Hostal=BigDecimal.valueOf(0);
+				}
+				if(idHotel!=null){
+					Long id_hs5=Long.valueOf(idHotel);
+					id_Hotel=BigDecimal.valueOf(id_hs5);
+				}
+				else{
+					id_Hotel=BigDecimal.valueOf(0);
+				}
+
+        		VOOferta tb = alohandes.adicionarOferta(id_Oferta,reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear una Oferta tal que su estado de reserva es: " + reservado);
@@ -768,7 +818,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     	{
 			String tipoContrato = JOptionPane.showInputDialog (this, "Tipo del Contrato?", "Adicionar Contrato", JOptionPane.QUESTION_MESSAGE);
     		String dura = JOptionPane.showInputDialog (this, "Duración del Contrato?", "Adicionar Contrato", JOptionPane.QUESTION_MESSAGE);
-    		if (dura==null){
+    		String idCCC = JOptionPane.showInputDialog (this, "id del Contrato?", "Adicionar Contrato", JOptionPane.QUESTION_MESSAGE);
+			if (dura==null){
 				dura="0";
 			}
 			int duracion = Integer.parseInt(dura);
@@ -795,11 +846,14 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			int fechaPago = Integer.parseInt(FechaPago);
 			String idOferta = JOptionPane.showInputDialog (this, "id asociado a la oferta?", "Adicionar Contrato", JOptionPane.QUESTION_MESSAGE);
     		if (duracion>0 && duracionPrePaid>=0 && precioEspecial>=0 && precioFinal>0
-			&& FechaInicio!=null && fechaPago>0 && idOferta!=null && tipoContrato!=null)
+			&& FechaInicio!=null && fechaPago>0 && idOferta!=null && tipoContrato!=null && idCCC!=null)
     		{
+				Long id_hs=Long.valueOf(idCCC);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
 				Timestamp fechaInicio = Timestamp.valueOf(FechaInicio);
-				long id_Oferta= Long.parseLong(idOferta);
-        		VOContrato tb = alohandes.adicionarContrato(tipoContrato, fechaInicio, duracion, duracionPrePaid, precioEspecial, precioFinal, fechaPago, id_Oferta);
+				long id_O= Long.parseLong(idOferta);
+				BigDecimal id_Oferta = BigDecimal.valueOf(id_O);
+        		VOContrato tb = alohandes.adicionarContrato(idss,tipoContrato, fechaInicio, duracion, duracionPrePaid, precioEspecial, precioFinal, fechaPago, id_Oferta);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un Contrato del tipo: " + tipoContrato);
@@ -882,7 +936,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     		String tipoI = JOptionPane.showInputDialog (this, "TipoI del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
 			String ubicacion = JOptionPane.showInputDialog (this, "Ubicación del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
 			String costoA = JOptionPane.showInputDialog (this, "Costo de administración del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
-    		if (costoA==null){
+    		String idIII = JOptionPane.showInputDialog (this, "id del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
+			if (costoA==null){
 				costoA="0";
 			}
 			int costoAdmin = Integer.parseInt(costoA);
@@ -892,10 +947,13 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			}
 			int numHabitaciones= Integer.parseInt(NumHabitaciones);
 			String idOferta = JOptionPane.showInputDialog (this, "Tipo del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
-			if (tipoI!=null && ubicacion!=null && costoAdmin>0 && numHabitaciones>0 && idOferta!=null)
+			if (tipoI!=null && ubicacion!=null && costoAdmin>0 && numHabitaciones>0 && idOferta!=null && idIII!=null)
     		{
-				long id_Oferta =Long.parseLong(idOferta);
-        		VOInmueble tb = alohandes.adicionarInmueble(tipoI, ubicacion,costoAdmin, numHabitaciones,id_Oferta);
+				Long id_hs=Long.valueOf(idIII);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
+				long id_O =Long.parseLong(idOferta);
+				BigDecimal id_Oferta = BigDecimal.valueOf(id_O);
+        		VOInmueble tb = alohandes.adicionarInmueble(idss,tipoI, ubicacion,costoAdmin, numHabitaciones,id_Oferta);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un Inmueble del tipo: " + tipoI);
@@ -1002,14 +1060,18 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 	public void adicionarSeguro(){
 		try 
     	{
+			String idSSS = JOptionPane.showInputDialog (this, "id Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
     		String FechaVence = JOptionPane.showInputDialog (this, "Nombre del Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
 			String descripcion = JOptionPane.showInputDialog (this, "Tipo del Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
 			String idInmueble = JOptionPane.showInputDialog (this, "id de inmueble asociado?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
     		if (FechaVence != null && descripcion!= null && idInmueble != null )
     		{
+				Long id_hs=Long.valueOf(idSSS);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
 				Timestamp fechaVence = Timestamp.valueOf(FechaVence);
-				long id_Inmueble = Long.parseLong(idInmueble);
-        		VOSeguro tb = alohandes.adicionarSeguro(fechaVence,descripcion,id_Inmueble);
+				long id_I = Long.parseLong(idInmueble);
+				BigDecimal id_Inmueble= BigDecimal.valueOf(id_I);
+        		VOSeguro tb = alohandes.adicionarSeguro(idss,fechaVence,descripcion,id_Inmueble);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear un Seguro con idInmueble: " + idInmueble);
@@ -1090,6 +1152,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     {
     	try 
     	{
+			String idHHH = JOptionPane.showInputDialog (this, "id de la habitacion", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
 			String tama = JOptionPane.showInputDialog (this, "Tamaño de la habitacion", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
             int tamanio = Integer.parseInt(tama);
 			String tipoH = JOptionPane.showInputDialog (this, "Tipo de habitación?", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
@@ -1097,17 +1160,21 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			int precioFinal=Integer.parseInt(precioF);
 			String ubicacion = JOptionPane.showInputDialog (this, "ubicacion", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
 			String OfertaId=JOptionPane.showInputDialog (this, "id Oferta asociada", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
-            long id_Oferta= Long.parseLong(OfertaId);
 			String ContratoId=JOptionPane.showInputDialog (this, "id Contrato asociado", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
-            long id_Contrato= Long.parseLong(ContratoId);
 			String InmuebleId=JOptionPane.showInputDialog (this, "id Inmueble asociado", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
-            long id_Inmueble= Long.parseLong(InmuebleId);
-		
             if (tamanio > 0 && tipoH != null 
-            && precioFinal > 0 && ubicacion != null && id_Oferta!=0L && id_Oferta>0
-			&& id_Contrato!=0L && id_Contrato>0 && id_Inmueble!=0L && id_Inmueble>0) 
+            && precioFinal > 0 && ubicacion != null && OfertaId!=null
+			&& ContratoId!=null && InmuebleId!=null && idHHH!=null) 
     		{
-        		VOHabitacion tb = alohandes.adicionarHabitacion(tamanio, tipoH, precioFinal, ubicacion,id_Oferta,id_Contrato,id_Inmueble);
+				long id_O= Long.parseLong(OfertaId);
+				long id_C= Long.parseLong(ContratoId);
+				long id_I= Long.parseLong(InmuebleId);
+				BigDecimal id_Oferta = BigDecimal.valueOf(id_O);
+				BigDecimal id_Contrato = BigDecimal.valueOf(id_C);
+				BigDecimal id_Inmueble = BigDecimal.valueOf(id_I);
+				Long id_hs=Long.valueOf(idHHH);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
+        		VOHabitacion tb = alohandes.adicionarHabitacion(idss,tamanio, tipoH, precioFinal, ubicacion,id_Oferta,id_Contrato,id_Inmueble);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear una habitacion frl tipo: " + tipoH);
@@ -1187,6 +1254,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 	{
 		try 
 		{
+			String idSSS = JOptionPane.showInputDialog (this, "id del Servicio", "Adicionar Servicio", JOptionPane.QUESTION_MESSAGE);
 			String nombre = JOptionPane.showInputDialog (this, "Nombre del Servicio", "Adicionar Servicio", JOptionPane.QUESTION_MESSAGE);
 			String cant = JOptionPane.showInputDialog (this, "Cantidad del Servicio?", "Adicionar Servicio", JOptionPane.QUESTION_MESSAGE);
 			int cantidad = Integer.parseInt(cant);
@@ -1197,7 +1265,9 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			
 			if (cantidad >= 0 && precio > 0 && nombre != null && (incluido==0 || incluido==1)) 
 			{
-				VOServicio tb = alohandes.adicionarservicio(precio, incluido, cantidad, nombre);
+				Long id_hs=Long.valueOf(idSSS);
+				BigDecimal idss=BigDecimal.valueOf(id_hs);
+				VOServicio tb = alohandes.adicionarservicio(idss,precio, incluido, cantidad, nombre);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear un servicio con nombre: " + nombre);
@@ -1256,8 +1326,10 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 
 			if (idHabitacion!=null && idServicio!=null)
 			{
-				long id_Habitacion = Long.parseLong(idHabitacion);
-				long id_Servicio = Long.parseLong(idServicio);
+				long id_H = Long.parseLong(idHabitacion);
+				long id_S = Long.parseLong(idServicio);
+				BigDecimal id_Habitacion = BigDecimal.valueOf(id_H);
+				BigDecimal id_Servicio = BigDecimal.valueOf(id_S);
 				VOBrindan tb = alohandes.adicionarBrindan(id_Habitacion, id_Servicio);
 				if (tb == null)
 				{

@@ -197,20 +197,20 @@ public class PersistenciaAlohandes {
 		return resp;
 	}
     /*  MANEJADOR DE EMPRESA   */
-    public Empresa adicionarEmpresa(String nombre, String tipo) 
+    public Empresa adicionarEmpresa(BigDecimal id_e,String nombre, String tipo) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long idPN = nextval ();
-            long tuplasInsertadas = sqlEmpresa.adicionarEmpresa(pm, idPN, nombre,tipo);
+            //long idPN = nextval ();
+            long tuplasInsertadas = sqlEmpresa.adicionarEmpresa(pm, id_e, nombre,tipo);
             tx.commit();
 
             log.trace ("Inserción de Empresa: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Empresa (idPN, nombre, tipo);
+            return new Empresa (id_e, nombre, tipo);
         }
         catch (Exception e)
         {
@@ -294,20 +294,20 @@ public class PersistenciaAlohandes {
 		return sqlEmpresa.darEmpresaPorId(pmf.getPersistenceManager(), idE);
 	}
     /*  MANEJADOR DE PROPIETARIO INMUEBLE */
-    public PropietarioInmueble adicionarPropietarioInmueble(String nombre, String vinculo, String tipo) 
+    public PropietarioInmueble adicionarPropietarioInmueble(BigDecimal id_Pi,String nombre, String vinculo, String tipo) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long idPI = nextval ();
-            long tuplasInsertadas = sqlPropietarioInmueble.adicionarPropietarioInmueble(pm, idPI, nombre, vinculo, tipo);
+            //long idPI = nextval ();
+            long tuplasInsertadas = sqlPropietarioInmueble.adicionarPropietarioInmueble(pm, id_Pi, nombre, vinculo, tipo);
             tx.commit();
 
             log.trace ("Inserción de Empresa: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new PropietarioInmueble (idPI,tipo,nombre,vinculo);
+            return new PropietarioInmueble (id_Pi,tipo,nombre,vinculo);
         }
         catch (Exception e)
         {
@@ -484,20 +484,20 @@ public class PersistenciaAlohandes {
 		return sqlHotel.darHotelPorNombre(pmf.getPersistenceManager(), nombre);
 	}
     /* MANEJADOR DE HOSTAL */
-    public Hostal adicionarHostal(String nombre, int recepcion, Timestamp horaCierre, Timestamp horaApertura, String tipo) 
+    public Hostal adicionarHostal(BigDecimal id_hs, String nombre, int recepcion, Timestamp horaCierre, Timestamp horaApertura, String tipo) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long idHS = nextval ();
-            long tuplasInsertadas = sqlHostal.adicionarHostal(pm, idHS, nombre,recepcion, horaCierre,horaApertura,tipo);
+            //long idHS = nextval ();
+            long tuplasInsertadas = sqlHostal.adicionarHostal(pm, id_hs, nombre,recepcion, horaCierre,horaApertura,tipo);
             tx.commit();
 
             log.trace ("Inserción de Hostal: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Hostal (idHS, tipo, nombre,recepcion, horaApertura,horaCierre);
+            return new Hostal (id_hs, tipo, nombre,recepcion, horaApertura,horaCierre);
         }
         catch (Exception e)
         {
@@ -577,20 +577,20 @@ public class PersistenciaAlohandes {
 		return sqlHostal.darHostalesPorNombre(pmf.getPersistenceManager(), nombre);
 	}
     /* MANEJADOR DE CONTRATO */
-    public Contrato adicionarContrato(String tipoContrato, Timestamp fechaInicio, int duracion, int duracionPrePaid, int precioEspecial, int precioFinal, int fechaPago, long id_Oferta) 
+    public Contrato adicionarContrato(BigDecimal id_C,String tipoContrato, Timestamp fechaInicio, int duracion, int duracionPrePaid, int precioEspecial, int precioFinal, int fechaPago, BigDecimal id_Oferta) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long idC = nextval ();
-            long tuplasInsertadas = sqlContrato.adicionarContrato(pm, idC,tipoContrato,duracion,duracionPrePaid,precioEspecial,precioFinal,fechaInicio,fechaPago,id_Oferta);
+            //long idC = nextval ();
+            long tuplasInsertadas = sqlContrato.adicionarContrato(pm, id_C,tipoContrato,duracion,duracionPrePaid,precioEspecial,precioFinal,fechaInicio,fechaPago,id_Oferta);
             tx.commit();
 
-            log.trace ("Inserción de Contrato: " + idC + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción de Contrato: " + id_C + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Contrato(idC,tipoContrato,duracion,duracionPrePaid,precioEspecial,precioFinal,fechaInicio,fechaPago,id_Oferta);}
+            return new Contrato(id_C,tipoContrato,duracion,duracionPrePaid,precioEspecial,precioFinal,fechaInicio,fechaPago,id_Oferta);}
         catch (Exception e)
         {
 //        	e.printStackTrace();
@@ -642,20 +642,20 @@ public class PersistenciaAlohandes {
 		return sqlContrato.darContratosPorTipoContrato(pmf.getPersistenceManager(), tipoC);
 	}
     /* MANEJADOR DE INMUEBLE */
-    public Inmueble adicionarInmueble(String tipoI, String ubicacion, int costoAdmin, int numHabitaciones, long id_Oferta) 
+    public Inmueble adicionarInmueble(BigDecimal id_I, String tipoI, String ubicacion, int costoAdmin, int numHabitaciones, BigDecimal id_Oferta) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long idC = nextval ();
-            long tuplasInsertadas = sqlInmueble.adicionarInmueble(pm, idC,tipoI,ubicacion,costoAdmin, numHabitaciones,id_Oferta);
+            //long idC = nextval ();
+            long tuplasInsertadas = sqlInmueble.adicionarInmueble(pm, id_I,tipoI,ubicacion,costoAdmin, numHabitaciones,id_Oferta);
             tx.commit();
 
             log.trace ("Inserción de Inmueble: " + tipoI + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Inmueble(idC,tipoI,ubicacion, costoAdmin,numHabitaciones,id_Oferta);}
+            return new Inmueble(id_I,tipoI,ubicacion, costoAdmin,numHabitaciones,id_Oferta);}
         catch (Exception e)
         {
 //        	e.printStackTrace();
@@ -718,22 +718,21 @@ public class PersistenciaAlohandes {
 	{
 		return sqlInmueble.darInmueblesViviendas(pmf.getPersistenceManager());
 	}
-    
     /* MANEJADOR DE SEGURO */
-    public Seguro adicionarSeguro(Timestamp fechaVence, String descripcion, long InmuebleID) 
+    public Seguro adicionarSeguro(BigDecimal id_S, Timestamp fechaVence, String descripcion, BigDecimal InmuebleID) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
         try
         {
             tx.begin();
-            long idS = nextval ();
-            long tuplasInsertadas = sqlSeguro.adicionarSeguro(pm, idS,fechaVence,descripcion,InmuebleID);
+            //ong idS = nextval ();
+            long tuplasInsertadas = sqlSeguro.adicionarSeguro(pm, id_S,fechaVence,descripcion,InmuebleID);
             tx.commit();
 
-            log.trace ("Inserción de Seguro: " + idS + ": " + tuplasInsertadas + " tuplas insertadas");
+            log.trace ("Inserción de Seguro: " + id_S + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Seguro(idS,fechaVence,descripcion,InmuebleID);}
+            return new Seguro(id_S,fechaVence,descripcion,InmuebleID);}
         catch (Exception e)
         {
 //        	e.printStackTrace();
