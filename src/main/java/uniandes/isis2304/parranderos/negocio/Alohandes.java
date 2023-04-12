@@ -1,6 +1,7 @@
 package uniandes.isis2304.parranderos.negocio;
 
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,10 +27,10 @@ public class Alohandes {
     public void cerrarUnidadPersistencia() {
         pp.cerrarUnidadPersistencia();
     }
-                                                    /* HOTEL */
-    public Hotel adicionarHotel(String nombre, String tipo) {
+                                        /* HOTEL */
+    public Hotel adicionarHotel(BigDecimal id, String nombre, String tipo) {
         log.info("Adicionando Hotel: " + nombre);
-        Hotel hotel = pp.adicionarHotel(nombre, tipo);
+        Hotel hotel = pp.adicionarHotel(id,nombre, tipo);
         log.info("Adicionando Hotel: " + hotel);
         return hotel;
     }
@@ -45,18 +46,6 @@ public class Alohandes {
         log.info("Eliminando Hotel por Id: " + resp + " tuplas eliminadas");
         return resp;
     }
-    /*   REVISAR
-    public List<VOHotel> darVOHotel ()
-	{
-		log.info ("Generando los VO de los Hoteles");       
-        List<VOHotel> vohotel = new LinkedList<VOHotel> ();
-        for (Hotel ht : pp.darHoteles())
-        {
-        	vohotel.add(ht);
-        }
-        log.info ("Generando los VO de los Hoteles: " + vohotel.size() + " existentes");
-        return vohotel;
-	} */
     public Hotel darHotelPorNombre(String nombre) {
         log.info("Dar información de Hotel por nombre: " + nombre);
         Hotel hotel = pp.darHotelPorNombre(nombre);
@@ -70,7 +59,18 @@ public class Alohandes {
         log.info("Listando Hoteles: " + hoteles.size() + " Hoteles existentes");
         return hoteles;
     }
-                                                /* HOSTAL */
+    public List<VOHotel> darVOHoteles()
+	{
+		log.info ("Generando los VO de las Hoteles");       
+        List<VOHotel> voHoteles = new LinkedList<VOHotel> ();
+        for (Hotel hst : pp.darHoteles())
+        {
+        	voHoteles.add (hst);
+        }
+        log.info ("Generando los VO de las Teles: " + voHoteles.size() + " existentes");
+        return voHoteles;
+	}
+                                /* HOSTAL */
     public Hostal adicionarHostal(String nombre, int recepcion, Timestamp Apertura,
             Timestamp Cierre, String tipo) {
         log.info("Adicionando hostal: " + nombre);
@@ -148,7 +148,7 @@ public class Alohandes {
         log.info("Buscando habitacion por Id: " + hab != null ? hab : "NO EXISTE");
         return hab;
     }
-                                        /* SERVICIO */
+                                    /* SERVICIO */
     public Servicio adicionarservicio(int precio, int incluido, int cantidad, String nombre) {
         log.info("Adicionando servicio " + nombre);
         Servicio resp = pp.adicionarServicio(precio, incluido, cantidad, nombre);
@@ -199,7 +199,7 @@ public class Alohandes {
         log.info ("Adicionando contrato con fecha de inicio: " + resp );
         return resp;
     }
-    public long eliminarContratoPorID(long idC) {
+    public long eliminarContratoPorId(long idC) {
         log.info("Eliminando contrato por id: " + idC);
         long resp = pp.eliminarContratoPorId(idC);
         log.info("Eliminando contrato por id: " + idC + " tuplas eliminadas");
@@ -217,7 +217,7 @@ public class Alohandes {
         log.info("Consultando Contrato: " + servicios.size() + " servicios existentes");
         return servicios;
     }
-                                        /* EMPRESA */
+                                    /* EMPRESA */
     public Empresa adicionarEmpresa(String nombre, String tipo) 
     {
     log.info("Adicionando empresa: " + nombre);
@@ -365,14 +365,27 @@ public class Alohandes {
         log.info ("Dar información de Inmuebles por numHabitaciones: " + inmuebles.size() + " empresas con ese nombre existentes");
         return inmuebles;
  	}
-     public List<Inmueble> darInmueblesPorUbicacion (String ubicacion)
+    public List<Inmueble> darInmueblesPorUbicacion (String ubicacion)
      {
          log.info ("Dar información de Inmuebles por ubicacion: " + ubicacion);
          List<Inmueble> inmuebles = pp.darInmueblesPorUbicacion(ubicacion);
          log.info ("Dar información de Inmuebles por ubicacion: " + inmuebles.size() + " empresas con ese nombre existentes");
          return inmuebles;
       }
-
+    public List<Inmueble> darInmueblesAptos ()
+	{
+        log.info ("Consultando Apartamentos");
+        List<Inmueble> inmuebles = pp.darInmueblesAptos();	
+        log.info ("Consultando Apartamentos: " + inmuebles.size() + " existentes");
+        return inmuebles;
+	}
+    public List<Inmueble> darInmueblesViviendas()
+	{
+        log.info ("Consultando Viviendas");
+        List<Inmueble> inmuebles = pp.darInmueblesViviendas();	
+        log.info ("Consultando Viviendas: " + inmuebles.size() + " existentes");
+        return inmuebles;
+	}
     /* SEGURO */
     public Seguro adicionarSeguro(Timestamp fechaVence, String descripcion, long id_Inmueble) 
     {
@@ -387,6 +400,13 @@ public class Alohandes {
         long resp = pp.eliminarSeguroPorId(idI);
         log.info ("Eliminando seguro por id: " + resp + " tuplas eliminadas");
         return resp;
+	}
+    public List<Seguro> darSeguros ()
+	{
+        log.info ("Consultando Seguros");
+        List<Seguro> inmuebles = pp.darSeguros();	
+        log.info ("Consultando Seguros: " + inmuebles.size() + " existentes");
+        return inmuebles;
 	}
     /* CLIENTE */
     public Cliente adicionarCliente(String nombre, String correo, String contrasenia) 
@@ -410,6 +430,13 @@ public class Alohandes {
         log.info ("Eliminando Cliente por id: " + resp + " tuplas eliminadas");
         return resp;
 	}
+    public List<Cliente> darClientes ()
+	{
+        log.info ("Consultando Clientes");
+        List<Cliente> clientes = pp.darClientes();	
+        log.info ("Consultando Clientes: " + clientes.size() + " existentes");
+        return clientes;
+	}
     /* OFERTA */
     public Oferta adicionarOferta(int reservado, long id_Cliente, long id_PropietarioI, long id_Empresa, long id_Hostal, long id_Hotel) 
     {
@@ -424,6 +451,13 @@ public class Alohandes {
         long resp = pp.eliminarOfertaPorId(idI);
         log.info ("Eliminando oferta por id: " + resp + " tuplas eliminadas");
         return resp;
+	}
+    public List<Oferta> darOfertas ()
+	{
+        log.info ("Consultando Ofertas");
+        List<Oferta> ofertas = pp.darOfertas();
+        log.info ("Consultando Ofertas: " + ofertas.size() + " existentes");
+        return ofertas;
 	}
     /* BRINDAN */
     public Brindan adicionarBrindan(long id_Habitacion, long id_Servicio) 

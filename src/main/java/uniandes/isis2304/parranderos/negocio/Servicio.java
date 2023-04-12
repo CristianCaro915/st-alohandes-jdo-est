@@ -1,13 +1,15 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public class Servicio implements VOServicio {
-    private long id_Sv;
+    private BigDecimal id_Sv;
     private int precio;
     private int incluido;
     private int cantidad;
     private String nombre;
 
-    public Servicio(long id_Sv, int precio, int incluido, int cantidad, String nombre) {
+    public Servicio(BigDecimal id_Sv, int precio, int incluido, int cantidad, String nombre) {
         this.id_Sv = id_Sv;
         this.precio = precio;
         this.incluido = incluido;
@@ -16,17 +18,17 @@ public class Servicio implements VOServicio {
     }
 
     public Servicio() {
-        this.id_Sv = 0;
+        this.id_Sv = new BigDecimal(0);
         this.precio = 0;
         this.incluido = 0;
         this.cantidad = 0;
         this.nombre = "";
     }
 
-    public long getId() {
+    public BigDecimal getId() {
         return id_Sv;
     }
-    public void setId(long id) {
+    public void setId(BigDecimal id) {
         this.id_Sv = id;
     }
     public int getPrecio() {

@@ -1,16 +1,18 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public class Inmueble implements VOInmueble{
 
-    private Long id_I;
+    private BigDecimal id_I;
     private String tipoI;
     private String ubicacion;
     private int costoAdmin;
     private int numHabitaciones;
-    private Long id_Oferta;
+    private BigDecimal id_Oferta;
 
-    public Inmueble(Long id_I, String tipoI, String ubicacion, int costoAdmin,
-            int numHabitaciones, Long id_Oferta) {
+    public Inmueble(BigDecimal id_I, String tipoI, String ubicacion, int costoAdmin,
+            int numHabitaciones, BigDecimal id_Oferta) {
         this.id_I = id_I;
         this.tipoI = tipoI;
         this.ubicacion = ubicacion;
@@ -18,10 +20,10 @@ public class Inmueble implements VOInmueble{
         this.numHabitaciones = numHabitaciones;
         this.id_Oferta = id_Oferta;
     }
-    public Long getId() {
+    public BigDecimal getId() {
         return id_I;
     }
-    public void setId(Long id_I) {
+    public void setId(BigDecimal id_I) {
         this.id_I = id_I;
     }
     public String getTipoI() {
@@ -48,10 +50,10 @@ public class Inmueble implements VOInmueble{
     public void setNumHabitaciones(int numHabitaciones) {
         this.numHabitaciones = numHabitaciones;
     }
-    public Long getIdOferta() {
+    public BigDecimal getIdOferta() {
         return id_Oferta;
     }
-    public void setIdOferta(Long id_Oferta) {
+    public void setIdOferta(BigDecimal id_Oferta) {
         this.id_Oferta = id_Oferta;
     }
 }

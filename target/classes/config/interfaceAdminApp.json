@@ -14,7 +14,7 @@
               },
               {
                 "label": "Eliminar",
-                "event": "eliminarHotel"
+                "event": "eliminarHotelPorId"
             }
           ]
         },
@@ -27,7 +27,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarHostal" 
+                "event" : "eliminarHostalPorId" 
             }
         ]
         },
@@ -40,7 +40,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarPropietarioInmueble" 
+                "event" : "eliminarPropietarioIPorId" 
             }
         ]
         },
@@ -53,7 +53,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarOferta" 
+                "event" : "eliminarOfertaPorId" 
             }
         ]
         },
@@ -66,7 +66,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarInmueble" 
+                "event" : "eliminarInmueblePorId" 
             }
         ]
         },
@@ -79,7 +79,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarHabitacion" 
+                "event" : "eliminarHabitacionPorId" 
             }
         ]
         },
@@ -92,7 +92,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarServicio" 
+                "event" : "eliminarServicioPorId" 
             }
         ]
         },
@@ -105,7 +105,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarContrato" 
+                "event" : "eliminarContratoPorId" 
             }
         ]
         },
@@ -118,7 +118,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarSeguro" 
+                "event" : "eliminarSeguroPorId" 
             }
         ]
         },
@@ -131,7 +131,7 @@
             },
             {
                 "label" : "Eliminar",
-                "event" : "eliminarCliente" 
+                "event" : "eliminarClientePorId" 
             }
         ]
         }

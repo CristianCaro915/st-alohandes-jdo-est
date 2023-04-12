@@ -1,18 +1,20 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public class PropietarioInmueble implements VOPropietarioInmueble {
-    private long id_Pi;
+    private BigDecimal id_Pi;
     private String nombre;
     private String tipo;
     private String vinculo;
 
     public PropietarioInmueble() {
-        this.id_Pi = 0;
+        this.id_Pi = new BigDecimal(0);
         this.nombre = "";
         this.vinculo = "";
         this.tipo = "";
     }
-    public PropietarioInmueble(long id_Pi, String tipo, String nombre, String vinculo) {
+    public PropietarioInmueble(BigDecimal id_Pi, String tipo, String nombre, String vinculo) {
         this.id_Pi = id_Pi;
         this.nombre = nombre;
         this.vinculo = vinculo;
@@ -24,7 +26,7 @@ public class PropietarioInmueble implements VOPropietarioInmueble {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public long getIdPi() {
+    public BigDecimal getIdPi() {
         return this.id_Pi;
     }
     public String getNombre() {
@@ -33,7 +35,7 @@ public class PropietarioInmueble implements VOPropietarioInmueble {
     public String getVinculo() {
         return this.vinculo;
     }
-    public void setIdPi(long id_Pi) {
+    public void setIdPi(BigDecimal id_Pi) {
         this.id_Pi = id_Pi;
     }
     public void setNombre(String nombre) {

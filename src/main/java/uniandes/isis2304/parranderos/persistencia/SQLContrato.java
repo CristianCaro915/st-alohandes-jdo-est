@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import uniandes.isis2304.parranderos.negocio.Contrato;
 
@@ -16,29 +17,29 @@ public class SQLContrato {
     public SQLContrato(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarContrato(PersistenceManager pm, Long id, String tipoContrato, int duracion, int duracionPrePaid,
-            int precioEspecial, int precioFinal, Timestamp fechaInicio, int fechaPago,long id_Oferta) {
+    public long adicionarContrato(PersistenceManager pm, BigDecimal ID_C, String TIPOCONTRATO, int DURACION, int DURACIONPREPAID,
+            int PRECIOESPECIAL, int PRECIOFINAL, Timestamp FECHAINICIO, int FECHAPAGO,BigDecimal ID_OFERTA) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaContrato()
                 + "(ID_C, TIPOCONTRATO, DURACION,  DURACIONPREPAID,  PRECIOESPECIAL, PRECIOFINAL,FECHAINICIO,  FECHAPAGO,  ID_OFERTA)values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, tipoContrato, duracion, duracionPrePaid,precioEspecial, precioFinal, fechaInicio,fechaPago, id_Oferta);
+        q.setParameters(ID_C, TIPOCONTRATO, DURACION, DURACIONPREPAID,PRECIOESPECIAL, PRECIOFINAL, FECHAINICIO,FECHAPAGO, ID_OFERTA);
         return (long) q.executeUnique();
     }
-    public long eliminarContratoPorId(PersistenceManager pm, long idContrato) {
+    public long eliminarContratoPorId(PersistenceManager pm, long ID_C) {
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaContrato() + " WHERE ID_C = ?");
-        q.setParameters(idContrato);
+        q.setParameters(ID_C);
         return (long) q.executeUnique();
     }
-    public Contrato darContratoPorId(PersistenceManager pm, long idContrato) {
+    public Contrato darContratoPorId(PersistenceManager pm, long ID_C) {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaContrato() + " WHERE ID_C = ?");
         q.setResultClass(Contrato.class);
-        q.setParameters(idContrato);
+        q.setParameters(ID_C);
         return (Contrato) q.executeUnique();
     }
-    public List<Contrato> darContratosPorTipoContrato (PersistenceManager pm, String tipoContrato) 
+    public List<Contrato> darContratosPorTipoContrato (PersistenceManager pm, String TIPOCONTRATO) 
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaContrato () + " WHERE TIPOCONTRATO = ?");
 		q.setResultClass(Contrato.class);
-		q.setParameters(tipoContrato);
+		q.setParameters(TIPOCONTRATO);
 		return (List<Contrato>) q.executeList();
 	}
     public List<Contrato> darContratos (PersistenceManager pm)

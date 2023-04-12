@@ -1,8 +1,10 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public interface VOServicio {
 
-    public long getId();
+    public BigDecimal getId();
 
     public int getPrecio();
 

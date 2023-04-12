@@ -1,4 +1,5 @@
 package uniandes.isis2304.parranderos.negocio;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Hostal implements VOHostal {
@@ -6,7 +7,7 @@ public class Hostal implements VOHostal {
      * ********
      * Atributos
      *********/
-    private long id_Hs;
+    private BigDecimal id_Hs;
     private String nombre;
     private String tipo;
     private int recepcion;
@@ -14,7 +15,7 @@ public class Hostal implements VOHostal {
     private Timestamp horaApertura;
 
     public Hostal() {
-        this.id_Hs = 0;
+        this.id_Hs = new BigDecimal(0);
         this.nombre = "";
         this.tipo = "";
         this.recepcion = 0;
@@ -22,7 +23,7 @@ public class Hostal implements VOHostal {
         this.horaCierre = null;
     }
 
-    public Hostal(long id_Hs, String tipo, String nombre, int recepcion, Timestamp Apertura, Timestamp Cierre) {
+    public Hostal(BigDecimal id_Hs, String tipo, String nombre, int recepcion, Timestamp Apertura, Timestamp Cierre) {
         this.id_Hs = id_Hs;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -36,7 +37,7 @@ public class Hostal implements VOHostal {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public long getId() {
+    public BigDecimal getId() {
         return id_Hs;
     }
     public String getNombre() {
@@ -51,7 +52,7 @@ public class Hostal implements VOHostal {
     public Timestamp getCierre() {
         return horaCierre;
     }
-    public void setId(long id_Hs) {
+    public void setId(BigDecimal id_Hs) {
         this.id_Hs = id_Hs;
     }
     public void setNombre(String nombre) {

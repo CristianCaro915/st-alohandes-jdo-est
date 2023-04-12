@@ -1,26 +1,28 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public class Oferta implements VOOferta {
-    private long id_O;
+    private BigDecimal id_O;
     private int reservado;
-    private long id_Cliente;
-    private long id_Propietario;
-    private long id_Empresa;
-    private long id_Hostal;
-    private long id_Hotel;
+    private BigDecimal id_Cliente;
+    private BigDecimal id_Propietario;
+    private BigDecimal id_Empresa;
+    private BigDecimal id_Hostal;
+    private BigDecimal id_Hotel;
 
     public Oferta() {
-        this.id_O = 0L;
+        this.id_O = new BigDecimal(0);
         this.reservado = 0;
-        this.id_Cliente = 0L;
-        this.id_Propietario = 0L;
-        this.id_Empresa = 0L;
-        this.id_Hostal = 0L;
-        this.id_Hotel = 0L;
+        this.id_Cliente = new BigDecimal(0);
+        this.id_Propietario = new BigDecimal(0);
+        this.id_Empresa = new BigDecimal(0);
+        this.id_Hostal = new BigDecimal(0);
+        this.id_Hotel = new BigDecimal(0);
     }
 
-    public Oferta(Long id_O, int reservado, long id_Cliente, long id_Propietario, 
-    long id_Empresa, long id_Hostal, long id_Hotel) {
+    public Oferta(BigDecimal id_O, int reservado, BigDecimal id_Cliente, BigDecimal id_Propietario, 
+    BigDecimal id_Empresa, BigDecimal id_Hostal, BigDecimal id_Hotel) {
         this.id_O = id_O;
         this.reservado = reservado;
         this.id_Cliente = id_Cliente;
@@ -29,10 +31,10 @@ public class Oferta implements VOOferta {
         this.id_Hostal = id_Hostal;
         this.id_Hotel=id_Hotel;
     }
-    public Long getId() {
+    public BigDecimal getId() {
         return id_O;
     }
-    public void setId(Long id_O) {
+    public void setId(BigDecimal id_O) {
         this.id_O = id_O;
     }
     public int getReservado() {
@@ -41,34 +43,34 @@ public class Oferta implements VOOferta {
     public void setReservado(int reservado) {
         this.reservado = reservado;
     }
-    public long getIdCliente() {
+    public BigDecimal getIdCliente() {
         return id_Cliente;
     }
-    public void setIdCliente(long id_Cliente) {
+    public void setIdCliente(BigDecimal id_Cliente) {
         this.id_Cliente = id_Cliente;
     }
-    public long getIdPropietario() {
+    public BigDecimal getIdPropietario() {
         return id_Propietario;
     }
-    public void setIdPropietario(Long id_Propietario) {
+    public void setIdPropietario(BigDecimal id_Propietario) {
         this.id_Propietario = id_Propietario;
     }
-    public long getIdEmpresa() {
+    public BigDecimal getIdEmpresa() {
         return id_Empresa;
     }
-    public void setIdEmpresa(Long id_Empresa) {
+    public void setIdEmpresa(BigDecimal id_Empresa) {
         this.id_Empresa = id_Empresa;
     }
-    public long getIdHostal() {
+    public BigDecimal getIdHostal() {
         return id_Hostal;
     }
-    public void setIdHostal(Long id_Hostal) {
+    public void setIdHostal(BigDecimal id_Hostal) {
         this.id_Hostal = id_Hostal;
     }
-    public long getIdHotel() {
+    public BigDecimal getIdHotel() {
         return id_Hotel;
     }
-    public void setIdHotel(Long id_Hotel) {
+    public void setIdHotel(BigDecimal id_Hotel) {
         this.id_Hotel = id_Hotel;
     }
 }

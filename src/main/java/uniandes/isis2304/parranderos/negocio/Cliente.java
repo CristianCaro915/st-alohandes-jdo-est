@@ -1,13 +1,15 @@
 package uniandes.isis2304.parranderos.negocio;
 
+import java.math.BigDecimal;
+
 public class Cliente implements VOCliente{
 
-    private Long id_Cl;
+    private BigDecimal id_Cl;
     private String nombre;
     private String correo;
     private String contrasenia;
 
-    public Cliente(Long id_Cl, String nombre, String correo, String contrasenia) {
+    public Cliente(BigDecimal id_Cl, String nombre, String correo, String contrasenia) {
         this.id_Cl = id_Cl;
         this.nombre = nombre;
         this.correo=correo;
@@ -15,16 +17,16 @@ public class Cliente implements VOCliente{
     }
 
     public Cliente() {
-        this.id_Cl=0L;
+        this.id_Cl=new BigDecimal(0);
         this.nombre="";
         this.correo="";
         this.contrasenia="";
     }
 
-    public Long getId() {
+    public BigDecimal getId() {
         return this.id_Cl;
     }
-    public void setId(Long id_Cl) {
+    public void setId(BigDecimal id_Cl) {
         this.id_Cl = id_Cl;
     }
     public String getNombre() {
