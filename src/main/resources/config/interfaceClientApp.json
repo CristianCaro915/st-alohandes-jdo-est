@@ -37,6 +37,10 @@
             {
                 "label": "Ver viviendas",
                 "event": "listarViviendas"
+            },
+            {
+                "label":"Ver Top20 Inmuebles",
+                "event":"listarTop20Inmuebles"
             }
         ]
       },
@@ -46,6 +50,24 @@
             {
                 "label": "Ver catálogo",
                 "event": "listarHabitaciones"
+            },
+            {
+                "label":"Top 20 más reservadas",
+                "event":"listarTop20Habitaciones"
+            }
+        ]
+      },
+      {
+        "menuTitle":"Reservas",
+        "options":
+        [
+            {
+                "label":"Hacer reserva",
+                "event":"actualizarOfertaReservado"
+            },
+            {
+                "label":"Eliminar reserva",
+                "event":"actualizarOfertaReservado"
             }
         ]
       }

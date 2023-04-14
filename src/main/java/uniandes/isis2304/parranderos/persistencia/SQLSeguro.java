@@ -30,7 +30,7 @@ public class SQLSeguro {
         q.setParameters(fechaVence);
         return (long) q.executeUnique();
 	}
-    public long eliminarSeguroPorId (PersistenceManager pm, long ID_S)
+    public long eliminarSeguroPorId (PersistenceManager pm, BigDecimal ID_S)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaSeguro () + " WHERE ID_S = ?");
         q.setParameters(ID_S);

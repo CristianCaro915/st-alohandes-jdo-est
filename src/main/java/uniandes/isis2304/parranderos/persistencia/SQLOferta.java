@@ -23,7 +23,7 @@ public class SQLOferta {
         q.setParameters(ID_O, RESERVADO,ID_CLIENTE,ID_PROPIETARIOI,ID_EMPRESA,ID_HOSTAL,ID_HOTEL);
         return (long) q.executeUnique();
     }
-    public long eliminarOfertaPorId (PersistenceManager pm, long ID_O)
+    public long eliminarOfertaPorId (PersistenceManager pm, BigDecimal ID_O)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaOferta() + " WHERE ID_O = ?");
         q.setParameters(ID_O);
@@ -41,5 +41,10 @@ public class SQLOferta {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaOferta ());
         q.setResultClass(Oferta.class);
         return (List<Oferta>) q.executeList();
+    }
+    public long actualizarOfertaReservado(PersistenceManager pm, BigDecimal ID_O, int RESERVADO){
+        Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaOferta()+" SET RESERVADO = ? WHERE ID_O = ?");
+        q.setParameters(RESERVADO,ID_O);
+        return (long) q.executeUnique();
     }
 }

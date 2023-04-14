@@ -40,7 +40,7 @@ public class Alohandes {
         log.info("Eliminando Hotel por nombre: " + resp + " tuplas eliminadas");
         return resp;
     }
-    public long eliminarHotelPorId(long idHotel) {
+    public long eliminarHotelPorId(BigDecimal idHotel) {
         log.info("Eliminando Hotel por nombre: " + idHotel);
         long resp = pp.eliminarHotelPorId(idHotel);
         log.info("Eliminando Hotel por Id: " + resp + " tuplas eliminadas");
@@ -84,7 +84,7 @@ public class Alohandes {
         log.info("Eliminando hostal: " + resp + " tuplas eliminadas");
         return resp;
     }
-    public long eliminarHostalPorId(long idH) {
+    public long eliminarHostalPorId(BigDecimal idH) {
         log.info("Eliminando hostal por id: " + idH);
         long resp = pp.eliminarHostalPorId(idH);
         log.info("Eliminando hostal: " + resp);
@@ -122,7 +122,7 @@ public class Alohandes {
         log.info("adicionando habitacion por nombre: " + resp);
         return resp;
     }
-    public long eliminarHabitacionId(Long id) {
+    public long eliminarHabitacionId(BigDecimal id) {
 
         log.info("Eliminando habitacion por id: " + id);
         long resp = pp.eliminarHabitacionPorId(id);
@@ -148,6 +148,12 @@ public class Alohandes {
         log.info("Buscando habitacion por Id: " + hab != null ? hab : "NO EXISTE");
         return hab;
     }
+    public List<Object[]> darTop20Habiaciones() {
+        log.info("Consultando TOP20 de Habitaciones");
+        List<Object[]> Habitacion = pp.darTop20Habiaciones();
+        log.info("Consultando TOP20 Habitaciones: " + Habitacion.size() + " habitaciones existentes");
+        return Habitacion;
+    }
                                     /* SERVICIO */
     public Servicio adicionarservicio(BigDecimal id_sh, int precio, int incluido, int cantidad, String nombre) {
         log.info("Adicionando servicio " + nombre);
@@ -155,7 +161,7 @@ public class Alohandes {
         log.info("Adicionando servicio por nombre: " + resp);
         return resp;
     }
-    public long eliminarServicPorID(long idH) {
+    public long eliminarServicPorID(BigDecimal idH) {
         log.info("Eliminando servicio por id: " + idH);
         long resp = pp.eliminarServicioPorId(idH);
         log.info("Eliminando servicio por id: " + idH + " tuplas eliminadas");
@@ -199,7 +205,7 @@ public class Alohandes {
         log.info ("Adicionando contrato con fecha de inicio: " + resp );
         return resp;
     }
-    public long eliminarContratoPorId(long idC) {
+    public long eliminarContratoPorId(BigDecimal idC) {
         log.info("Eliminando contrato por id: " + idC);
         long resp = pp.eliminarContratoPorId(idC);
         log.info("Eliminando contrato por id: " + idC + " tuplas eliminadas");
@@ -217,7 +223,13 @@ public class Alohandes {
         log.info("Consultando Contrato: " + servicios.size() + " servicios existentes");
         return servicios;
     }
-                                    /* EMPRESA */
+    public List<Object[]> darTop20Contratos() {
+        log.info("Consultando TOP20 de Contratos");
+        List<Object[]> contratos = pp.darTop20Contratos();
+        log.info("Consultando TOP20 contratos: " + contratos.size() + " contratos existentes");
+        return contratos;
+    }
+                                /* EMPRESA */
     public Empresa adicionarEmpresa(BigDecimal id_e,String nombre, String tipo) 
     {
     log.info("Adicionando empresa: " + nombre);
@@ -232,7 +244,7 @@ public class Alohandes {
         log.info ("Eliminando Empresa por nombre: " + resp + " tuplas eliminadas");
         return resp;
 	}
-    public long eliminarEmpresaPorId (long idE)
+    public long eliminarEmpresaPorId (BigDecimal idE)
 	{
         log.info ("Eliminando Empresa por id: " + idE);
         long resp = pp.eliminarEmpresaPorId(idE);
@@ -286,7 +298,7 @@ public class Alohandes {
         log.info ("Eliminando PropietarioInmueble por nombre: " + resp + " tuplas eliminadas");
         return resp;
 	}
-    public long eliminarPropietarioInmueblePorId (long idPI)
+    public long eliminarPropietarioInmueblePorId (BigDecimal idPI)
 	{
         log.info ("Eliminando Empresa por id: " + idPI);
         long resp = pp.eliminarPropietarioInmueblePorId(idPI);
@@ -333,7 +345,7 @@ public class Alohandes {
     log.info("Adicionando Contrato: " + inmueble);
     return inmueble;
     }
-    public long eliminarInmueblePorId (long idI)
+    public long eliminarInmueblePorId (BigDecimal idI)
 	{
         log.info ("Eliminando Inmueble por id: " + idI);
         long resp = pp.eliminarInmueblePorId(idI);
@@ -386,6 +398,12 @@ public class Alohandes {
         log.info ("Consultando Viviendas: " + inmuebles.size() + " existentes");
         return inmuebles;
 	}
+    public List<Object[]> darTop20Inmuebles() {
+        log.info("Consultando TOP20 de inmuebles");
+        List<Object[]> inmuebles = pp.darTop20Inmuebles();
+        log.info("Consultando TOP20 inmuebles: " + inmuebles.size() + " inmuebles existentes");
+        return inmuebles;
+    }
     /* SEGURO */
     public Seguro adicionarSeguro(BigDecimal id_s,Timestamp fechaVence, String descripcion, BigDecimal id_Inmueble) 
     {
@@ -394,7 +412,7 @@ public class Alohandes {
     log.info("Adicionando seguro: " + seguro);
     return seguro;
     }
-    public long eliminarSeguroPorId (long idI)
+    public long eliminarSeguroPorId (BigDecimal idI)
 	{
         log.info ("Eliminando seguro por id: " + idI);
         long resp = pp.eliminarSeguroPorId(idI);
@@ -423,7 +441,7 @@ public class Alohandes {
         log.info ("Buscando Cliente por correo: " + correo != null ? correo : "NO EXISTE");
         return cliente;
 	}
-    public long eliminarClientePorId (long idI)
+    public long eliminarClientePorId (BigDecimal idI)
 	{
         log.info ("Eliminando Cliente por id: " + idI);
         long resp = pp.eliminarClientePorId(idI);
@@ -445,7 +463,7 @@ public class Alohandes {
     log.info("Adicionando oferta: " + oferta);
     return oferta;
     }
-    public long eliminarOfertaPorId (long idI)
+    public long eliminarOfertaPorId (BigDecimal idI)
 	{
         log.info ("Eliminando oferta por id: " + idI);
         long resp = pp.eliminarOfertaPorId(idI);
@@ -459,6 +477,12 @@ public class Alohandes {
         log.info ("Consultando Ofertas: " + ofertas.size() + " existentes");
         return ofertas;
 	}
+    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado){
+        log.info ("Consultando Ofertas");
+        long rta = pp.actualizarOfertaReservado(idOferta,reservado);
+        log.info ("Actualizando Ofertas: " + rta + " existentes");
+        return rta;
+    }
     /* BRINDAN */
     public Brindan adicionarBrindan(BigDecimal id_Habitacion, BigDecimal id_Servicio) 
     {

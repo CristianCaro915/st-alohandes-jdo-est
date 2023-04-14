@@ -24,12 +24,14 @@ public class SQLContrato {
         q.setParameters(ID_C, TIPOCONTRATO, DURACION, DURACIONPREPAID,PRECIOESPECIAL, PRECIOFINAL, FECHAINICIO,FECHAPAGO, ID_OFERTA);
         return (long) q.executeUnique();
     }
-    public long eliminarContratoPorId(PersistenceManager pm, long ID_C) {
+    public long eliminarContratoPorId(PersistenceManager pm, BigDecimal ID_C) 
+    {
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaContrato() + " WHERE ID_C = ?");
         q.setParameters(ID_C);
         return (long) q.executeUnique();
     }
-    public Contrato darContratoPorId(PersistenceManager pm, long ID_C) {
+    public Contrato darContratoPorId(PersistenceManager pm, long ID_C) 
+    {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaContrato() + " WHERE ID_C = ?");
         q.setResultClass(Contrato.class);
         q.setParameters(ID_C);
@@ -48,4 +50,9 @@ public class SQLContrato {
 		q.setResultClass(Contrato.class);
 		return (List<Contrato>) q.executeList();
 	}
+    public List<Object[]> darTop20Contratos(PersistenceManager pm)
+    {
+        Query q = pm.newQuery(SQL, "SELECT c.TIPOCONTRATO AS CATEGORIA, COUNT(c.ID_C) AS CANTIDAD FROM "+pp.darTablaContrato()+" c WHERE ROWNUM<20 GROUP BY c.TIPOCONTRATO");
+		return (List<Object[]>) q.executeList();
+    }
 }

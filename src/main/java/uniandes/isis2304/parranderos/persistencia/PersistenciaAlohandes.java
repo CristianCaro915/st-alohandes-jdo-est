@@ -254,7 +254,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarEmpresaPorId(long idE) 
+    public long eliminarEmpresaPorId(BigDecimal idE) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -351,7 +351,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarPropietarioInmueblePorId(long idE) 
+    public long eliminarPropietarioInmueblePorId(BigDecimal idE) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -448,7 +448,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarHotelPorId(long idHT) 
+    public long eliminarHotelPorId(BigDecimal idHT) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -541,7 +541,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarHostalPorId(long idHS) 
+    public long eliminarHostalPorId(BigDecimal idHS) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -606,7 +606,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarContratoPorId(long idC) 
+    public long eliminarContratoPorId(BigDecimal idC) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -641,6 +641,10 @@ public class PersistenciaAlohandes {
 	{
 		return sqlContrato.darContratosPorTipoContrato(pmf.getPersistenceManager(), tipoC);
 	}
+    public List<Object[]> darTop20Contratos()
+	{
+		return sqlContrato.darTop20Contratos(pmf.getPersistenceManager());
+	}
     /* MANEJADOR DE INMUEBLE */
     public Inmueble adicionarInmueble(BigDecimal id_I, String tipoI, String ubicacion, int costoAdmin, int numHabitaciones, BigDecimal id_Oferta) 
 	{
@@ -671,7 +675,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarInmueblePorId(long idI) 
+    public long eliminarInmueblePorId(BigDecimal idI) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -718,6 +722,10 @@ public class PersistenciaAlohandes {
 	{
 		return sqlInmueble.darInmueblesViviendas(pmf.getPersistenceManager());
 	}
+    public List<Object[]> darTop20Inmuebles()
+	{
+		return sqlInmueble.darTop20Inmuebles(pmf.getPersistenceManager());
+	}
     /* MANEJADOR DE SEGURO */
     public Seguro adicionarSeguro(BigDecimal id_S, Timestamp fechaVence, String descripcion, BigDecimal InmuebleID) 
 	{
@@ -748,7 +756,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarSeguroPorId(long idI) 
+    public long eliminarSeguroPorId(BigDecimal idI) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -848,7 +856,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarHabitacionPorId(long idH) 
+    public long eliminarHabitacionPorId(BigDecimal idH) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -887,6 +895,10 @@ public class PersistenciaAlohandes {
 	{
 		return sqlHabitacion.darHabitacionPorId(pmf.getPersistenceManager(), idH);
 	}
+    public List<Object[]> darTop20Habiaciones()
+	{
+		return sqlHabitacion.darTop20Habitaciones(pmf.getPersistenceManager());
+	}
     /* MANEJADOR DE SERVICIO */
     public Servicio adicionarServicio(BigDecimal id_s, int precio, int incluido, int cantidad, String nombre) 
 	{
@@ -917,7 +929,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarServicioPorId(long idH) 
+    public long eliminarServicioPorId(BigDecimal idH) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1017,7 +1029,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarOfertaPorId(long idO) 
+    public long eliminarOfertaPorId(BigDecimal idO) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1052,6 +1064,9 @@ public class PersistenciaAlohandes {
 	{
 		return sqlOferta.darOfertas(pmf.getPersistenceManager());
 	}
+    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado ){
+        return sqlOferta.actualizarOfertaReservado(pmf.getPersistenceManager(),idOferta,reservado);
+    }
     /* MANEJADOR DE CLIENTE */
     public Cliente adicionarCliente(BigDecimal id_cl, String nombre, String correo,String contrasenia) 
 	{
@@ -1082,7 +1097,7 @@ public class PersistenciaAlohandes {
             pm.close();
         }
 	}
-    public long eliminarClientePorId(long idH) 
+    public long eliminarClientePorId(BigDecimal idH) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1203,6 +1218,9 @@ public class PersistenciaAlohandes {
 	{
 		return sqlBrindan.darBrindanPorIds(pmf.getPersistenceManager(),id_Habitacion,id_Servicio);
 	}
+
+    /* REQUERIMIENTOS */
+    
 
     /* Limpiar Alohandes */
     public long [] limpiarAlohandes ()
