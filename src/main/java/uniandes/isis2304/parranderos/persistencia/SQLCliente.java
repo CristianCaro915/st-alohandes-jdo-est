@@ -27,7 +27,7 @@ public class SQLCliente {
         q.setParameters(NOMBRE);
         return (long) q.executeUnique();
 	}
-    public long eliminarClientePorId (PersistenceManager pm, long ID_CL)
+    public long eliminarClientePorId (PersistenceManager pm, BigDecimal ID_CL)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaCliente() + " WHERE ID_CL = ?");
         q.setParameters(ID_CL);

@@ -22,7 +22,7 @@ class SQLHabitacion {
         q.setParameters(ID_H, TAMANIO, TIPOH, PRECIOFINAL, UBICACION, ID_OFERTA,ID_CONTRATO,ID_INMUEBLE);
         return (long) q.executeUnique();
     }
-    public long eliminarHabitacionPorId(PersistenceManager pm, long ID_H) {
+    public long eliminarHabitacionPorId(PersistenceManager pm, BigDecimal ID_H) {
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaHabitacion() + " WHERE ID_H = ?");
         q.setParameters(ID_H);
         return (long) q.executeUnique();
@@ -47,4 +47,9 @@ class SQLHabitacion {
 		q.setResultClass(Habitacion.class);
 		return (List<Habitacion>) q.executeList();
 	}
+    public List<Object[]> darTop20Habitaciones(PersistenceManager pm)
+    {
+        Query q = pm.newQuery(SQL, "SELECT h.TIPOH AS CATEGORIA, COUNT(h.ID_H) AS CANTIDAD FROM "+pp.darTablaHabitacion()+" h WHERE ROWNUM<20 GROUP BY h.TIPOH");
+		return (List<Object[]>) q.executeList();
+    }
 }

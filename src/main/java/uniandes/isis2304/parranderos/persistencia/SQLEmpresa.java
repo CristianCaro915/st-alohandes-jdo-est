@@ -29,7 +29,7 @@ class SQLEmpresa{
         q.setParameters(NOMBRE);
         return (long) q.executeUnique();
 	}
-    public long eliminarEmpresaPorId (PersistenceManager pm, long ID_E)
+    public long eliminarEmpresaPorId (PersistenceManager pm, BigDecimal ID_E)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaEmpresa() + " WHERE ID_E = ?");
         q.setParameters(ID_E);

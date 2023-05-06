@@ -27,7 +27,7 @@ class SQLHostal {
         q.setParameters(NOMBRE);
         return (long) q.executeUnique();
     }
-    public long eliminarHostalPorId(PersistenceManager pm, long ID_HS) {
+    public long eliminarHostalPorId(PersistenceManager pm, BigDecimal ID_HS) {
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaHostal() + " WHERE ID_HS = ?");
         q.setParameters(ID_HS);
         return (long) q.executeUnique();

@@ -29,7 +29,7 @@ class SQLPropietarioInmueble{
         q.setParameters(NOMBRE);
         return (long) q.executeUnique();
     }
-    public long eliminarPropietarioInmueblePorId (PersistenceManager pm, long ID_PI)
+    public long eliminarPropietarioInmueblePorId (PersistenceManager pm, BigDecimal ID_PI)
     {
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaPropietarioInmueble () + " WHERE ID_PI = ?");
         q.setParameters(ID_PI);
@@ -60,5 +60,12 @@ class SQLPropietarioInmueble{
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaPropietarioInmueble ());
         q.setResultClass(PropietarioInmueble.class);
         return (List<PropietarioInmueble>) q.executeList();
+    }
+    public List<Object[]> darPropietarioGananciaActual (PersistenceManager pm)
+    {
+        Query q = pm.newQuery(SQL,"SELECT pi.NOMBRE,pi.TIPO,c.TIPOCONTRATO,c.DURACION,o.RESERVADO,c.PRECIOESPECIAL,c.PRECIOFINAL AS PRECIO FROM" + pp.darTablaPropietarioInmueble ()+
+        " pi INNER JOIN "+pp.darTablaOferta()+"o ON o.ID_PROPIETARIOI=pi.ID_PI INNER JOIN "+pp.darTablaContrato()+
+        " c ON c.ID_OFERTA=o.ID_O WHERE o.reservado=1 AND c.FECHAINICIO <= '12/03/2023' AND CONTRATO.FECHAINICIO >= '01/01/2023'");
+        return (List<Object[]>) q.executeList();
     }
 }

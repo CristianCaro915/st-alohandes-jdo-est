@@ -29,7 +29,7 @@ public class SQLServicio {
         q.setParameters(NOMBRE);
         return (long) q.executeUnique();
 	}
-    public long eliminarServicioPorId (PersistenceManager pm, long ID_SH)
+    public long eliminarServicioPorId (PersistenceManager pm, BigDecimal ID_SH)
 	{
         Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicio () + " WHERE ID_SH = ?");
         q.setParameters(ID_SH);

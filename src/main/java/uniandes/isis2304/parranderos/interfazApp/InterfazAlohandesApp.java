@@ -261,7 +261,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     		if (idTipoStr != null)
     		{
     			long idCl = Long.valueOf (idTipoStr);
-    			long tbEliminados = alohandes.eliminarClientePorId(idCl);
+				BigDecimal id_cl = BigDecimal.valueOf(idCl);
+    			long tbEliminados = alohandes.eliminarClientePorId(id_cl);
 
     			String resultado = "En eliminar Cliente\n\n";
     			resultado += tbEliminados + " Cliente eliminado\n";
@@ -386,7 +387,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_Ht != null)
     		{
     			long id_Hotel = Long.valueOf (id_Ht);
-    			long tbEliminados = alohandes.eliminarHotelPorId(id_Hotel);
+				BigDecimal id_H = BigDecimal.valueOf(id_Hotel);
+    			long tbEliminados = alohandes.eliminarHotelPorId(id_H);
     			String resultado = "En eliminar Hotel\n\n";
     			resultado += tbEliminados + " Hoteles eliminados\n";
     			resultado += "\n Operación terminada";
@@ -482,7 +484,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_Hs != null)
     		{
     			long id_Hostal = Long.valueOf (id_Hs);
-    			long tbEliminados = alohandes.eliminarHostalPorId(id_Hostal);
+				BigDecimal id_H= BigDecimal.valueOf(id_Hostal);
+    			long tbEliminados = alohandes.eliminarHostalPorId(id_H);
     			String resultado = "En eliminar Hostal\n\n";
     			resultado += tbEliminados + " Hostales eliminados\n";
     			resultado += "\n Operación terminada";
@@ -570,7 +573,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_Pi != null)
     		{
     			long id_PropietarioI = Long.valueOf (id_Pi);
-    			long tbEliminados = alohandes.eliminarPropietarioInmueblePorId(id_PropietarioI);
+				BigDecimal id_PI= BigDecimal.valueOf(id_PropietarioI);
+    			long tbEliminados = alohandes.eliminarPropietarioInmueblePorId(id_PI);
     			String resultado = "En eliminar PropietarioI\n\n";
     			resultado += tbEliminados + " PropietariosI eliminados\n";
     			resultado += "\n Operación terminada";
@@ -630,7 +634,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_E != null)
     		{
     			long id_Empresa = Long.valueOf (id_E);
-    			long tbEliminados = alohandes.eliminarEmpresaPorId(id_Empresa);
+				BigDecimal id_Em = BigDecimal.valueOf(id_Empresa);
+    			long tbEliminados = alohandes.eliminarEmpresaPorId(id_Em);
     			String resultado = "En eliminar Empresa\n\n";
     			resultado += tbEliminados + " Empresas eliminados\n";
     			resultado += "\n Operación terminada";
@@ -767,7 +772,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_O != null)
     		{
     			long id_Oferta = Long.valueOf (id_O);
-    			long tbEliminados = alohandes.eliminarOfertaPorId(id_Oferta);
+				BigDecimal id_Of= BigDecimal.valueOf(id_Oferta);
+    			long tbEliminados = alohandes.eliminarOfertaPorId(id_Of);
     			String resultado = "En eliminar Oferta\n\n";
     			resultado += tbEliminados + " Ofertas eliminados\n";
     			resultado += "\n Operación terminada";
@@ -884,7 +890,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_C != null)
     		{
     			long id_Contrato = Long.valueOf (id_C);
-    			long tbEliminados = alohandes.eliminarContratoPorId(id_Contrato);
+				BigDecimal id_Co = BigDecimal.valueOf(id_Contrato);
+    			long tbEliminados = alohandes.eliminarContratoPorId(id_Co);
     			String resultado = "En eliminar Contrato\n\n";
     			resultado += tbEliminados + " Contratos eliminados\n";
     			resultado += "\n Operación terminada";
@@ -924,6 +931,33 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     	String resp = "Las Contrato existentes son:\n";
     	int i = 1;
         for (Contrato tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
+	public void listarTopo20Contratos( )
+    {
+    	try 
+    	{
+			List <Object[]> lista = alohandes.darTop20Contratos();
+			String resultado = "En listarTopo20Contratos";
+			resultado +=  "\n" + listarTopo20Contratos(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+	private String listarTopo20Contratos(List<Object[]> lista) 
+    {
+    	String resp = "Los Top20Contrato existentes son:\n";
+    	int i = 1;
+        for (Object tb : lista)
         {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
@@ -984,7 +1018,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_I != null)
     		{
     			long id_Inmueble = Long.valueOf (id_I);
-    			long tbEliminados = alohandes.eliminarInmueblePorId(id_Inmueble);
+				BigDecimal id_In = BigDecimal.valueOf(id_Inmueble);
+    			long tbEliminados = alohandes.eliminarInmueblePorId(id_In);
     			String resultado = "En eliminar Inmueble\n\n";
     			resultado += tbEliminados + " Inmuebles eliminados\n";
     			resultado += "\n Operación terminada";
@@ -1056,6 +1091,33 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
         }
         return resp;
 	}
+	public void listarTop20Inmuebles( )
+    {
+    	try 
+    	{
+			List <Object[]> lista = alohandes.darTop20Inmuebles();
+			String resultado = "En Top20Habitaciones";
+			resultado +=  "\n" + listarTop20Inmuebles(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+	private String listarTop20Inmuebles(List<Object[]> lista) 
+    {
+    	String resp = "Las Top20Habitaciones existentes son:\n";
+    	int i = 1;
+        for (Object tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
+	}
 	/* SEGURO */
 	public void adicionarSeguro(){
 		try 
@@ -1102,7 +1164,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (id_S != null)
     		{
     			long id_Seguro = Long.valueOf (id_S);
-    			long tbEliminados = alohandes.eliminarSeguroPorId(id_Seguro);
+				BigDecimal id_se = BigDecimal.valueOf(id_Seguro);
+    			long tbEliminados = alohandes.eliminarSeguroPorId(id_se);
     			String resultado = "En eliminar Seguro\n\n";
     			resultado += tbEliminados + " Seguros eliminados\n";
     			resultado += "\n Operación terminada";
@@ -1231,7 +1294,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (numHabitacion != null)
     		{
     			long id_H = Long.valueOf (numHabitacion);
-    			long tbEliminados = alohandes.eliminarHabitacionId(id_H);
+				BigDecimal id_Ha= BigDecimal.valueOf(id_H);
+    			long tbEliminados = alohandes.eliminarHabitacionId(id_Ha);
     			String resultado = "En eliminar habitacion\n\n";
     			resultado += tbEliminados + " habitaciones eliminados\n";
     			resultado += "\n Operación terminada";
@@ -1248,6 +1312,33 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			String resultado = generarMensajeError(e);
 			panelDatos.actualizarInterfaz(resultado);
 		}
+	}
+	public void listarTop20Habitaciones( )
+    {
+    	try 
+    	{
+			List <Object[]> lista = alohandes.darTop20Habiaciones();
+			String resultado = "En Top20Habitaciones";
+			resultado +=  "\n" + listarTopo20Habitaciones(lista);
+			panelDatos.actualizarInterfaz(resultado);
+			resultado += "\n Operación terminada";
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+	private String listarTopo20Habitaciones(List<Object[]> lista) 
+    {
+    	String resp = "Las Top20Habitaciones existentes son:\n";
+    	int i = 1;
+        for (Object tb : lista)
+        {
+        	resp += i++ + ". " + tb.toString() + "\n";
+        }
+        return resp;
 	}
 	/* SERVICIO */
 	public void adicionarServicio( )
@@ -1297,7 +1388,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     		if (idTipoStr != null)
     		{
     			long idTipo = Long.valueOf (idTipoStr);
-    			long tbEliminados = alohandes.eliminarServicPorID(idTipo);
+				BigDecimal id_Sv = BigDecimal.valueOf(idTipo);
+    			long tbEliminados = alohandes.eliminarServicPorID(id_Sv);
 
     			String resultado = "En eliminar Servicio\n\n";
     			resultado += tbEliminados + " Servicios eliminados\n";
@@ -1381,7 +1473,36 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
-	
+	/* OFERTA */
+	public void actualizarOfertaReservado(){
+		
+		try 
+    	{
+    		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+    		if (idOferta != null && value!=null)
+    		{
+				long id_Oferta = Long.valueOf(idOferta);
+				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
+				int valuess = Integer.parseInt(value);
+    			long tbEliminados = alohandes.actualizarOfertaReservado(id_O,valuess);
+    			String resultado = "En actualizar Oferta\n\n";
+    			resultado += tbEliminados + " Oferta actualizada\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
 													/* METODOS ADMIN */
 	public void limpiarBD ()
 	{
