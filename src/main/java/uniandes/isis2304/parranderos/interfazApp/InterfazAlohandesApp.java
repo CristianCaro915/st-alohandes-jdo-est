@@ -454,7 +454,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 				BigDecimal idss=BigDecimal.valueOf(id_hs);
 				Timestamp horaApertura=Timestamp.valueOf(horaOpen);
 				Timestamp horaCierre = Timestamp.valueOf(horaClose);
-				VOHostal tb = alohandes.adicionarHostal(idss,nombre, recepcion, horaApertura, horaCierre, tipo);
+				VOHostal tb = alohandes.adicionarHostal(idss,nombre, recepcion, horaCierre, horaApertura, tipo);
 				if (tb == null)
 				{
 					throw new Exception ("No se pudo crear un hostal con nombre: " + nombre);
@@ -695,7 +695,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			String idEmpresa = JOptionPane.showInputDialog (this, "id asociado a la empresa?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idHostal = JOptionPane.showInputDialog (this, "id asociado al hostal?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idHotel = JOptionPane.showInputDialog (this, "id asociado al hotel?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
-    		if ((reservado==1 || reservado==0) && idOferta!=null && 
+    		String disponi = JOptionPane.showInputDialog (this, "id asociado al hotel?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
+			if ((reservado==1 || reservado==0) && idOferta!=null && disponi!= null &&
 			(idCliente!=null || idPropietario!=null ||idEmpresa!=null||idHostal!=null||idHotel!=null))
     		{
 				Long id_hs=Long.valueOf(idOferta);
@@ -705,43 +706,43 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 				BigDecimal id_Empresa;
 				BigDecimal id_Hostal;
 				BigDecimal id_Hotel;
+				int disponibilidad =Integer.parseInt(disponi);
 				if(idCliente!=null){
 					Long id_hs1=Long.valueOf(idCliente);
 					id_Cliente=BigDecimal.valueOf(id_hs1);
 				}
 				else{
-					id_Cliente=new BigDecimal(0);
+					id_Cliente=null;
 				}
 				if(idPropietario!=null){
 					Long id_hs2=Long.valueOf(idPropietario);
 					id_PropietarioI=BigDecimal.valueOf(id_hs2);
 				}
 				else{
-					id_PropietarioI=new BigDecimal(0);
+					id_PropietarioI=null;
 				}
 				if(idEmpresa!=null){
 					Long id_hs3=Long.valueOf(idEmpresa);
 					id_Empresa=BigDecimal.valueOf(id_hs3);
 				}
 				else{
-					id_Empresa=new BigDecimal(0);
+					id_Empresa=null;
 				}
 				if(idHostal!=null){
 					Long id_hs4=Long.valueOf(idHostal);
 					id_Hostal=BigDecimal.valueOf(id_hs4);
 				}
 				else{
-					id_Hostal=BigDecimal.valueOf(0);
+					id_Hostal=null;
 				}
 				if(idHotel!=null){
 					Long id_hs5=Long.valueOf(idHotel);
 					id_Hotel=BigDecimal.valueOf(id_hs5);
 				}
 				else{
-					id_Hotel=BigDecimal.valueOf(0);
+					id_Hotel=null;
 				}
-
-        		VOOferta tb = alohandes.adicionarOferta(id_Oferta,reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
+        		VOOferta tb = alohandes.adicionarOferta(id_Oferta,reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel,disponibilidad);
         		if (tb == null)
         		{
         			throw new Exception ("No se pudo crear una Oferta tal que su estado de reserva es: " + reservado);
@@ -1473,7 +1474,6 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
-	/* OFERTA */
 	public void actualizarOfertaReservado(){
 		
 		try 
@@ -1486,6 +1486,35 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
 				int valuess = Integer.parseInt(value);
     			long tbEliminados = alohandes.actualizarOfertaReservado(id_O,valuess);
+    			String resultado = "En actualizar Oferta\n\n";
+    			resultado += tbEliminados + " Oferta actualizada\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	public void actualizarDisponibilidad(){
+		
+		try 
+    	{
+    		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+    		if (idOferta != null && value!=null)
+    		{
+				long id_Oferta = Long.valueOf(idOferta);
+				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
+				int valuess = Integer.parseInt(value);
+    			long tbEliminados = alohandes.actualizarDisponibilidad(id_O,valuess);
     			String resultado = "En actualizar Oferta\n\n";
     			resultado += tbEliminados + " Oferta actualizada\n";
     			resultado += "\n Operación terminada";

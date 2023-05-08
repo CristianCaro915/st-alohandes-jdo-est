@@ -16,7 +16,7 @@ class SQLHostal {
     public SQLHostal(PersistenciaAlohandes pp) {
         this.pp = pp;
     }
-    public long adicionarHostal(PersistenceManager pm, BigDecimal ID_HS, String NOMBRE, int RECEPCION, Timestamp HORAAPERTURA,Timestamp HORACIERRE,String TIPO) {
+    public long adicionarHostal(PersistenceManager pm, BigDecimal ID_HS, String NOMBRE, int RECEPCION, Timestamp HORACIERRE,Timestamp HORAAPERTURA,String TIPO) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHostal()
                 + "(ID_HS, NOMBRE, RECEPCION, HORACIERRE, HORAAPERTURA,TIPO) values (?, ?, ?, ?, ?,?)");
         q.setParameters(ID_HS, NOMBRE, RECEPCION, HORACIERRE, HORAAPERTURA, TIPO);
