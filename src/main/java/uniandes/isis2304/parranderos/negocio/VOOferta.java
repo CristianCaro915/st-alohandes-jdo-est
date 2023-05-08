@@ -11,4 +11,5 @@ public interface VOOferta {
     public BigDecimal getIdEmpresa();
     public BigDecimal getIdHostal();
     public BigDecimal getIdHotel();
+    public int getDisponibilidad();
 }

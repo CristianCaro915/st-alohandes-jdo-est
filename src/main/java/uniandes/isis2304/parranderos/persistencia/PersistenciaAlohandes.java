@@ -497,7 +497,7 @@ public class PersistenciaAlohandes {
 
             log.trace ("Inserción de Hostal: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Hostal (id_hs, tipo, nombre,recepcion, horaApertura,horaCierre);
+            return new Hostal (id_hs, tipo, nombre,recepcion, horaCierre,horaApertura);
         }
         catch (Exception e)
         {
@@ -1000,7 +1000,7 @@ public class PersistenciaAlohandes {
 		return sqlServicio.darServicioPorNombre(pmf.getPersistenceManager(), nombre);
 	}
     /* MANEJADOR DE OFERTA */
-    public Oferta adicionarOferta(BigDecimal id_O, int reservado,BigDecimal id_Cliente,BigDecimal id_PropietarioI,BigDecimal id_Empresa,BigDecimal id_Hostal,BigDecimal id_Hotel) 
+    public Oferta adicionarOferta(BigDecimal id_O, int reservado,BigDecimal id_Cliente,BigDecimal id_PropietarioI,BigDecimal id_Empresa,BigDecimal id_Hostal,BigDecimal id_Hotel, int disponibilidad) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -1008,12 +1008,12 @@ public class PersistenciaAlohandes {
         {
             tx.begin();
             //long idSH = nextval ();
-            long tuplasInsertadas = sqlOferta.adicionarOferta(pm, id_O,reservado,id_Cliente,id_PropietarioI,id_Empresa,id_Hostal,id_Hotel);
+            long tuplasInsertadas = sqlOferta.adicionarOferta(pm, id_O,reservado,id_Cliente,id_PropietarioI,id_Empresa,id_Hostal,id_Hotel,disponibilidad);
             tx.commit();
 
             log.trace ("Inserción de ServicioH: " + id_O + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Oferta(id_O,reservado,id_Cliente,id_PropietarioI,id_Empresa,id_Hostal,id_Hotel);}
+            return new Oferta(id_O,reservado,id_Cliente,id_PropietarioI,id_Empresa,id_Hostal,id_Hotel,disponibilidad);}
         catch (Exception e)
         {
 //        	e.printStackTrace();
@@ -1066,6 +1066,9 @@ public class PersistenciaAlohandes {
 	}
     public long actualizarOfertaReservado(BigDecimal idOferta, int reservado ){
         return sqlOferta.actualizarOfertaReservado(pmf.getPersistenceManager(),idOferta,reservado);
+    }
+    public long actualizarDisponibilidad(BigDecimal id_o, int disponibilidad){
+        return sqlOferta.actualizarDisponibilidad(pmf.getPersistenceManager(),id_o, disponibilidad);
     }
     /* MANEJADOR DE CLIENTE */
     public Cliente adicionarCliente(BigDecimal id_cl, String nombre, String correo,String contrasenia) 

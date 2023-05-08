@@ -10,6 +10,7 @@ public class Oferta implements VOOferta {
     private BigDecimal id_Empresa;
     private BigDecimal id_Hostal;
     private BigDecimal id_Hotel;
+    private int disponibilidad;
 
     public Oferta() {
         this.id_O = new BigDecimal(0);
@@ -19,10 +20,11 @@ public class Oferta implements VOOferta {
         this.id_Empresa = new BigDecimal(0);
         this.id_Hostal = new BigDecimal(0);
         this.id_Hotel = new BigDecimal(0);
+        this.disponibilidad = 0;
     }
 
     public Oferta(BigDecimal id_O, int reservado, BigDecimal id_Cliente, BigDecimal id_Propietario, 
-    BigDecimal id_Empresa, BigDecimal id_Hostal, BigDecimal id_Hotel) {
+    BigDecimal id_Empresa, BigDecimal id_Hostal, BigDecimal id_Hotel,int disponibilidad) {
         this.id_O = id_O;
         this.reservado = reservado;
         this.id_Cliente = id_Cliente;
@@ -30,6 +32,7 @@ public class Oferta implements VOOferta {
         this.id_Empresa = id_Empresa;
         this.id_Hostal = id_Hostal;
         this.id_Hotel=id_Hotel;
+        this.disponibilidad=disponibilidad;
     }
     public BigDecimal getId() {
         return id_O;
@@ -72,5 +75,11 @@ public class Oferta implements VOOferta {
     }
     public void setIdHotel(BigDecimal id_Hotel) {
         this.id_Hotel = id_Hotel;
+    }
+    public int getDisponibilidad() {
+        return disponibilidad;
+    }
+    public void setDisponibilidad(int disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 }

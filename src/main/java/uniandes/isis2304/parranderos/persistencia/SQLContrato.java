@@ -20,8 +20,8 @@ public class SQLContrato {
     public long adicionarContrato(PersistenceManager pm, BigDecimal ID_C, String TIPOCONTRATO, int DURACION, int DURACIONPREPAID,
             int PRECIOESPECIAL, int PRECIOFINAL, Timestamp FECHAINICIO, int FECHAPAGO,BigDecimal ID_OFERTA) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaContrato()
-                + "(ID_C, TIPOCONTRATO, DURACION,  DURACIONPREPAID,  PRECIOESPECIAL, PRECIOFINAL,FECHAINICIO,  FECHAPAGO,  ID_OFERTA)values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        q.setParameters(ID_C, TIPOCONTRATO, DURACION, DURACIONPREPAID,PRECIOESPECIAL, PRECIOFINAL, FECHAINICIO,FECHAPAGO, ID_OFERTA);
+                + "(ID_C, TIPOCONTRATO, FECHAINICIO,  DURACION,  DURACIONPREPAID, PRECIOESPECIAL,PRECIOFINAL,  FECHAPAGO,  ID_OFERTA)values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        q.setParameters(ID_C, TIPOCONTRATO, FECHAINICIO, DURACION,DURACIONPREPAID, PRECIOESPECIAL, PRECIOFINAL,FECHAPAGO, ID_OFERTA);
         return (long) q.executeUnique();
     }
     public long eliminarContratoPorId(PersistenceManager pm, BigDecimal ID_C) 

@@ -71,8 +71,8 @@ public class Alohandes {
         return voHoteles;
 	}
                                 /* HOSTAL */
-    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, int recepcion, Timestamp Apertura,
-            Timestamp Cierre, String tipo) {
+    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, int recepcion, Timestamp Cierre,
+            Timestamp Apertura, String tipo) {
         log.info("Adicionando hostal: " + nombre);
         Hostal hostal = pp.adicionarHostal(id_hs,nombre, recepcion, Cierre, Apertura, tipo);
         log.info("Adicionando hostal: " + hostal);
@@ -456,10 +456,10 @@ public class Alohandes {
         return clientes;
 	}
     /* OFERTA */
-    public Oferta adicionarOferta(BigDecimal id_O,int reservado, BigDecimal id_Cliente, BigDecimal id_PropietarioI, BigDecimal id_Empresa, BigDecimal id_Hostal, BigDecimal id_Hotel) 
+    public Oferta adicionarOferta(BigDecimal id_O,int reservado, BigDecimal id_Cliente, BigDecimal id_PropietarioI, BigDecimal id_Empresa, BigDecimal id_Hostal, BigDecimal id_Hotel, int disponibilidad) 
     {
     log.info("Adicionando oferta : ");
-    Oferta oferta = pp.adicionarOferta(id_O,reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel);
+    Oferta oferta = pp.adicionarOferta(id_O,reservado, id_Cliente, id_PropietarioI, id_Empresa, id_Hostal, id_Hotel,disponibilidad);
     log.info("Adicionando oferta: " + oferta);
     return oferta;
     }
@@ -480,6 +480,12 @@ public class Alohandes {
     public long actualizarOfertaReservado(BigDecimal idOferta, int reservado){
         log.info ("Consultando Ofertas");
         long rta = pp.actualizarOfertaReservado(idOferta,reservado);
+        log.info ("Actualizando Ofertas: " + rta + " existentes");
+        return rta;
+    }
+    public long actualizarDisponibilidad(BigDecimal idOferta, int disponibilidad){
+        log.info ("Consultando Ofertas");
+        long rta = pp.actualizarDisponibilidad(idOferta,disponibilidad);
         log.info ("Actualizando Ofertas: " + rta + " existentes");
         return rta;
     }

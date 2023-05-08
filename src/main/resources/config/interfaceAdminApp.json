@@ -54,6 +54,10 @@
             {
                 "label" : "Eliminar",
                 "event" : "eliminarOfertaPorId" 
+            },
+            {
+                "label":"Actualizar Disponibilidad",
+                "event": "actualizarDisponibilidad"
             }
         ]
         },
