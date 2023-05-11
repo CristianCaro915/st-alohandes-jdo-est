@@ -42,9 +42,29 @@ public class SQLOferta {
         q.setResultClass(Oferta.class);
         return (List<Oferta>) q.executeList();
     }
-    public long actualizarOfertaReservado(PersistenceManager pm, BigDecimal ID_O, int RESERVADO){
+    public long actualizarOfertaReservado(PersistenceManager pm, BigDecimal ID_O, int RESERVADO,String ID_CLIENTE){
         Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaOferta()+" SET RESERVADO = ? WHERE ID_O = ?");
         q.setParameters(RESERVADO,ID_O);
+        if (ID_CLIENTE!="0")
+        {
+            long aa= Long.parseLong(ID_CLIENTE);
+            BigDecimal ID_CL = BigDecimal.valueOf(aa);
+            long a= actualizarCliente(pm,ID_O,ID_CL);
+        }
+        else
+        {
+            long a =actualizarClienteNull(pm, ID_O);
+        }
+        return (long) q.executeUnique();
+    }
+    public long actualizarCliente(PersistenceManager pm, BigDecimal ID_O, BigDecimal ID_CLIENTE){
+        Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaOferta()+" SET ID_CLIENTE = ? WHERE ID_O = ?");
+        q.setParameters(ID_CLIENTE,ID_O);
+        return (long) q.executeUnique();
+    }
+    public long actualizarClienteNull(PersistenceManager pm, BigDecimal ID_O){
+        Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaOferta()+" SET ID_CLIENTE = NULL WHERE ID_O = ?");
+        q.setParameters(ID_O);
         return (long) q.executeUnique();
     }
     public long actualizarDisponibilidad(PersistenceManager pm, BigDecimal ID_O, int DISPONIBILIDAD) {

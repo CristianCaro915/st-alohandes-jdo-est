@@ -477,9 +477,9 @@ public class Alohandes {
         log.info ("Consultando Ofertas: " + ofertas.size() + " existentes");
         return ofertas;
 	}
-    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado){
+    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado,String id_cliente){
         log.info ("Consultando Ofertas");
-        long rta = pp.actualizarOfertaReservado(idOferta,reservado);
+        long rta = pp.actualizarOfertaReservado(idOferta,reservado,id_cliente);
         log.info ("Actualizando Ofertas: " + rta + " existentes");
         return rta;
     }

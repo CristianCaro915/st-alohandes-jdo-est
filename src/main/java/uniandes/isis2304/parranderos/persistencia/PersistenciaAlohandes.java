@@ -1064,8 +1064,8 @@ public class PersistenciaAlohandes {
 	{
 		return sqlOferta.darOfertas(pmf.getPersistenceManager());
 	}
-    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado ){
-        return sqlOferta.actualizarOfertaReservado(pmf.getPersistenceManager(),idOferta,reservado);
+    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado, String id_cliente ){
+        return sqlOferta.actualizarOfertaReservado(pmf.getPersistenceManager(),idOferta,reservado,id_cliente);
     }
     public long actualizarDisponibilidad(BigDecimal id_o, int disponibilidad){
         return sqlOferta.actualizarDisponibilidad(pmf.getPersistenceManager(),id_o, disponibilidad);

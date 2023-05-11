@@ -850,12 +850,16 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     	{
     		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
 			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
-    		if (idOferta != null && value!=null)
+    		String id_cl =JOptionPane.showInputDialog (this, "Ingrese el ID del cliente a actualizar", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+			if(id_cl==null){
+				id_cl="0";
+			}
+			if (idOferta != null && value!=null)
     		{
 				long id_Oferta = Long.valueOf(idOferta);
 				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
 				int valuess = Integer.parseInt(value);
-    			long tbEliminados = alohandes.actualizarOfertaReservado(id_O,valuess);
+    			long tbEliminados = alohandes.actualizarOfertaReservado(id_O,valuess,id_cl);
     			String resultado = "En actualizar Oferta\n\n";
     			resultado += tbEliminados + " Oferta actualizada\n";
     			resultado += "\n Operación terminada";
