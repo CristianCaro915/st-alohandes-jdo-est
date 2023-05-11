@@ -6,7 +6,7 @@ public interface VOHostal {
     public BigDecimal getId();
     public String getNombre();
     public String getTipo();
-    public int getRecepcion();
+    public BigDecimal getRecepcion();
     public Timestamp getCierre();
     public Timestamp getApertura();
 

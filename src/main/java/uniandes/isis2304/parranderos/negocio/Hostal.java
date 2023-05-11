@@ -10,7 +10,7 @@ public class Hostal implements VOHostal {
     private BigDecimal id_Hs;
     private String nombre;
     private String tipo;
-    private int recepcion;
+    private BigDecimal recepcion;
     private Timestamp horaCierre;
     private Timestamp horaApertura;
 
@@ -18,12 +18,12 @@ public class Hostal implements VOHostal {
         this.id_Hs = new BigDecimal(0);
         this.nombre = "";
         this.tipo = "";
-        this.recepcion = 0;
+        this.recepcion = new BigDecimal(0);
         this.horaApertura = null;
         this.horaCierre = null;
     }
 
-    public Hostal(BigDecimal id_Hs, String tipo, String nombre, int recepcion, Timestamp Apertura, Timestamp Cierre) {
+    public Hostal(BigDecimal id_Hs, String nombre, BigDecimal recepcion, Timestamp Apertura, Timestamp Cierre, String tipo) {
         this.id_Hs = id_Hs;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -43,7 +43,7 @@ public class Hostal implements VOHostal {
     public String getNombre() {
         return nombre;
     }
-    public int getRecepcion() {
+    public BigDecimal getRecepcion() {
         return recepcion;
     }
     public Timestamp getApertura() {
@@ -64,8 +64,10 @@ public class Hostal implements VOHostal {
     public void SetCierre(Timestamp cierre) {
         this.horaCierre = cierre;
     }
-    public void setRecepcion(int num) {
-        if (num == 0 || num == 1) {
+    public void setRecepcion(BigDecimal num) {
+        BigDecimal num1=BigDecimal.valueOf(1);
+        BigDecimal num0=BigDecimal.valueOf(0);
+        if (num == num1 || num == num0) {
             this.recepcion = num;
         }
     }

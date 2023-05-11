@@ -462,7 +462,7 @@ public class PersistenciaAlohandes {
         }
         catch (Exception e)
         {
-//        	e.printStackTrace();
+        	e.printStackTrace();
         	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
             return -1;
         }
@@ -484,7 +484,7 @@ public class PersistenciaAlohandes {
 		return sqlHotel.darHotelPorNombre(pmf.getPersistenceManager(), nombre);
 	}
     /* MANEJADOR DE HOSTAL */
-    public Hostal adicionarHostal(BigDecimal id_hs, String nombre, int recepcion, Timestamp horaCierre, Timestamp horaApertura, String tipo) 
+    public Hostal adicionarHostal(BigDecimal id_hs, String nombre, BigDecimal recepcion, Timestamp horaCierre, Timestamp horaApertura, String tipo) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
@@ -497,7 +497,7 @@ public class PersistenciaAlohandes {
 
             log.trace ("Inserción de Hostal: " + nombre + ": " + tuplasInsertadas + " tuplas insertadas");
 
-            return new Hostal (id_hs, tipo, nombre,recepcion, horaCierre,horaApertura);
+            return new Hostal (id_hs, nombre,recepcion, horaCierre,horaApertura, tipo);
         }
         catch (Exception e)
         {
@@ -646,7 +646,7 @@ public class PersistenciaAlohandes {
 		return sqlContrato.darTop20Contratos(pmf.getPersistenceManager());
 	}
     /* MANEJADOR DE INMUEBLE */
-    public Inmueble adicionarInmueble(BigDecimal id_I, String tipoI, String ubicacion, int costoAdmin, int numHabitaciones, BigDecimal id_Oferta) 
+    public Inmueble adicionarInmueble(BigDecimal id_I, String tipoI, String ubicacion, BigDecimal costoAdmin, BigDecimal numHabitaciones, BigDecimal id_Oferta) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();

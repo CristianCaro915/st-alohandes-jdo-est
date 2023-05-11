@@ -35,7 +35,7 @@ class SQLHotel {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaHotel() + " WHERE NOMBRE = ?");
         q.setResultClass(Hotel.class);
         q.setParameters(NOMBRE);
-        return (Hotel) q.executeList();
+        return (Hotel) q.executeUnique();
     }
     public List<Hotel> darHoteles(PersistenceManager pm) {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaHotel());

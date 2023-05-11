@@ -44,6 +44,20 @@
             }
         ]
         },
+        {
+            "menuTitle":"Empresa",
+            "options":
+            [
+                {
+                    "label":"Adicionar",
+                    "event":"adicionarEmpresa"
+                },
+                {
+                    "label":"Eliminar",
+                    "event":"eliminarEmpresaPorId"
+                }
+            ]
+        },
         {"menuTitle": "Oferta",
         "options":
         [
@@ -84,6 +98,14 @@
             {
                 "label" : "Eliminar",
                 "event" : "eliminarHabitacionPorId" 
+            },
+            {
+                "label":"Agregar servicios",
+                "event":"adicionarBrindan"
+            },
+            {
+                "label":"Eliminar servicios",
+                "event":"eliminarBrindanPorIds"
             }
         ]
         },

@@ -358,7 +358,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     			String resultado = "En buscar un hotel por nombre\n\n";
     			if (hotel != null)
     			{
-        			resultado += "El hotel es es: " + hotel;
+        			resultado += "El hotel tiene nombre: " + hotel.getNombre() +" y id: "+hotel.getId();
     			}
     			else
     			{
@@ -445,13 +445,15 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if(recep==null){
 				recep="0";
 			}
-			int recepcion = Integer.parseInt(recep);
+			int recepcionInt = Integer.parseInt(recep);
 			String horaClose=JOptionPane.showInputDialog (this, "Hora de cierre", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
 			String horaOpen=JOptionPane.showInputDialog (this, "Hora de apertura", "Adicionar hostal", JOptionPane.QUESTION_MESSAGE);
-			if ((recepcion==0 || recepcion==1) && tipo != null && nombre != null && horaClose!=null && horaOpen!=null && idHostal!=null)
+			if ((recepcionInt==0 || recepcionInt==1) && tipo != null && nombre != null && horaClose!=null && horaOpen!=null && idHostal!=null)
 			{
 				Long id_hs=Long.valueOf(idHostal);
 				BigDecimal idss=BigDecimal.valueOf(id_hs);
+				Long rececpcc=Long.valueOf(recepcionInt);
+				BigDecimal recepcion=BigDecimal.valueOf(rececpcc);
 				Timestamp horaApertura=Timestamp.valueOf(horaOpen);
 				Timestamp horaCierre = Timestamp.valueOf(horaClose);
 				VOHostal tb = alohandes.adicionarHostal(idss,nombre, recepcion, horaCierre, horaApertura, tipo);
@@ -598,7 +600,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     	{
     		String nombreEmpresa = JOptionPane.showInputDialog (this, "Nombre de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
 			String tipoEmpresa = JOptionPane.showInputDialog (this, "Tipo de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
-    		String idEEE = JOptionPane.showInputDialog (this, "Tipo de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
+    		String idEEE = JOptionPane.showInputDialog (this, "Id de la Empresa?", "Adicionar Empresa", JOptionPane.QUESTION_MESSAGE);
 			if (nombreEmpresa != null && tipoEmpresa!= null && idEEE!=null )
     		{
 				Long id_hs=Long.valueOf(idEEE);
@@ -695,7 +697,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			String idEmpresa = JOptionPane.showInputDialog (this, "id asociado a la empresa?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idHostal = JOptionPane.showInputDialog (this, "id asociado al hostal?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			String idHotel = JOptionPane.showInputDialog (this, "id asociado al hotel?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
-    		String disponi = JOptionPane.showInputDialog (this, "id asociado al hotel?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
+    		String disponi = JOptionPane.showInputDialog (this, "Está disponible (1|0)?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
 			if ((reservado==1 || reservado==0) && idOferta!=null && disponi!= null &&
 			(idCliente!=null || idPropietario!=null ||idEmpresa!=null||idHostal!=null||idHotel!=null))
     		{
@@ -818,6 +820,64 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
         	resp += i++ + ". " + tb.toString() + "\n";
         }
         return resp;
+	}
+	public void actualizarOfertaReservado(){
+		
+		try 
+    	{
+    		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+    		if (idOferta != null && value!=null)
+    		{
+				long id_Oferta = Long.valueOf(idOferta);
+				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
+				int valuess = Integer.parseInt(value);
+    			long tbEliminados = alohandes.actualizarOfertaReservado(id_O,valuess);
+    			String resultado = "En actualizar Oferta\n\n";
+    			resultado += tbEliminados + " Oferta actualizada\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
+	public void actualizarDisponibilidad(){
+		
+		try 
+    	{
+    		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
+    		if (idOferta != null && value!=null)
+    		{
+				long id_Oferta = Long.valueOf(idOferta);
+				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
+				int valuess = Integer.parseInt(value);
+    			long tbEliminados = alohandes.actualizarDisponibilidad(id_O,valuess);
+    			String resultado = "En actualizar Oferta\n\n";
+    			resultado += tbEliminados + " Oferta actualizada\n";
+    			resultado += "\n Operación terminada";
+    			panelDatos.actualizarInterfaz(resultado);
+    		}
+    		else
+    		{
+    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+    		}
+		} 
+    	catch (Exception e) 
+    	{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
 	}
 	/* CONTRATO */
 	public void adicionarContrato(){
@@ -975,19 +1035,24 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			if (costoA==null){
 				costoA="0";
 			}
-			int costoAdmin = Integer.parseInt(costoA);
+			int costoAdminInt = Integer.parseInt(costoA);
 			String NumHabitaciones = JOptionPane.showInputDialog (this, "Número de habitaciones del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
 			if(NumHabitaciones==null){
 				NumHabitaciones="0";
 			}
-			int numHabitaciones= Integer.parseInt(NumHabitaciones);
-			String idOferta = JOptionPane.showInputDialog (this, "Tipo del Inmueble?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
-			if (tipoI!=null && ubicacion!=null && costoAdmin>0 && numHabitaciones>0 && idOferta!=null && idIII!=null)
+			int numHabitacionesInt= Integer.parseInt(NumHabitaciones);
+			String idOferta = JOptionPane.showInputDialog (this, "Id de oferta asociado?", "Adicionar Inmueble", JOptionPane.QUESTION_MESSAGE);
+			if (tipoI!=null && ubicacion!=null && costoAdminInt>0 && numHabitacionesInt>0 && idOferta!=null && idIII!=null)
     		{
 				Long id_hs=Long.valueOf(idIII);
 				BigDecimal idss=BigDecimal.valueOf(id_hs);
 				long id_O =Long.parseLong(idOferta);
 				BigDecimal id_Oferta = BigDecimal.valueOf(id_O);
+				long costoAdminLong = Long.valueOf(costoAdminInt);
+				long numHabitacionLong = Long.valueOf(numHabitacionesInt);
+				BigDecimal numHabitaciones= BigDecimal.valueOf(numHabitacionLong);
+				BigDecimal costoAdmin = BigDecimal.valueOf(costoAdminLong);
+
         		VOInmueble tb = alohandes.adicionarInmueble(idss,tipoI, ubicacion,costoAdmin, numHabitaciones,id_Oferta);
         		if (tb == null)
         		{
@@ -1124,8 +1189,8 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 		try 
     	{
 			String idSSS = JOptionPane.showInputDialog (this, "id Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
-    		String FechaVence = JOptionPane.showInputDialog (this, "Nombre del Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
-			String descripcion = JOptionPane.showInputDialog (this, "Tipo del Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
+    		String FechaVence = JOptionPane.showInputDialog (this, "Fecha de vencimiento del Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
+			String descripcion = JOptionPane.showInputDialog (this, "Descripcion del Seguro?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
 			String idInmueble = JOptionPane.showInputDialog (this, "id de inmueble asociado?", "Adicionar Seguro", JOptionPane.QUESTION_MESSAGE);
     		if (FechaVence != null && descripcion!= null && idInmueble != null )
     		{
@@ -1474,64 +1539,7 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
 			panelDatos.actualizarInterfaz(resultado);
 		}
 	}
-	public void actualizarOfertaReservado(){
-		
-		try 
-    	{
-    		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
-			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
-    		if (idOferta != null && value!=null)
-    		{
-				long id_Oferta = Long.valueOf(idOferta);
-				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
-				int valuess = Integer.parseInt(value);
-    			long tbEliminados = alohandes.actualizarOfertaReservado(id_O,valuess);
-    			String resultado = "En actualizar Oferta\n\n";
-    			resultado += tbEliminados + " Oferta actualizada\n";
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
-    		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	}
-	public void actualizarDisponibilidad(){
-		
-		try 
-    	{
-    		String idOferta = JOptionPane.showInputDialog (this, "id de oferta asociada", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
-			String value =JOptionPane.showInputDialog (this, "Que actualización desea sobre la oferta (1|0)", "Actualizar oferta", JOptionPane.QUESTION_MESSAGE);
-    		if (idOferta != null && value!=null)
-    		{
-				long id_Oferta = Long.valueOf(idOferta);
-				BigDecimal id_O =BigDecimal.valueOf(id_Oferta);
-				int valuess = Integer.parseInt(value);
-    			long tbEliminados = alohandes.actualizarDisponibilidad(id_O,valuess);
-    			String resultado = "En actualizar Oferta\n\n";
-    			resultado += tbEliminados + " Oferta actualizada\n";
-    			resultado += "\n Operación terminada";
-    			panelDatos.actualizarInterfaz(resultado);
-    		}
-    		else
-    		{
-    			panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-    		}
-		} 
-    	catch (Exception e) 
-    	{
-//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	}
+
 													/* METODOS ADMIN */
 	public void limpiarBD ()
 	{

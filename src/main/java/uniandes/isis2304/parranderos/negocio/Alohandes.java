@@ -41,7 +41,7 @@ public class Alohandes {
         return resp;
     }
     public long eliminarHotelPorId(BigDecimal idHotel) {
-        log.info("Eliminando Hotel por nombre: " + idHotel);
+        log.info("Eliminando Hotel por id: " + idHotel);
         long resp = pp.eliminarHotelPorId(idHotel);
         log.info("Eliminando Hotel por Id: " + resp + " tuplas eliminadas");
         return resp;
@@ -49,7 +49,7 @@ public class Alohandes {
     public Hotel darHotelPorNombre(String nombre) {
         log.info("Dar información de Hotel por nombre: " + nombre);
         Hotel hotel = pp.darHotelPorNombre(nombre);
-        log.info("Dar información de Hotel por nombre: " + hotel
+        log.info("Dar información de Hotel por nombre: " + hotel.getNombre()
                 + " Hotel con ese nombre existentes");
         return hotel;
     }
@@ -71,7 +71,7 @@ public class Alohandes {
         return voHoteles;
 	}
                                 /* HOSTAL */
-    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, int recepcion, Timestamp Cierre,
+    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, BigDecimal recepcion, Timestamp Cierre,
             Timestamp Apertura, String tipo) {
         log.info("Adicionando hostal: " + nombre);
         Hostal hostal = pp.adicionarHostal(id_hs,nombre, recepcion, Cierre, Apertura, tipo);
@@ -338,11 +338,11 @@ public class Alohandes {
         return propietarioInmueble;
  	}
                                     /* Inmueble */
-    public Inmueble adicionarInmueble(BigDecimal id_i,String tipoI, String ubicacion, int costoAdmin,int numHabitaciones,BigDecimal id_Oferta) 
+    public Inmueble adicionarInmueble(BigDecimal id_i,String tipoI, String ubicacion, BigDecimal costoAdmin,BigDecimal numHabitaciones,BigDecimal id_Oferta) 
     {
-    log.info("Adicionando Contrato de tipo: " + tipoI);
+    log.info("Adicionando Inmueble de tipo: " + tipoI);
     Inmueble inmueble = pp.adicionarInmueble(id_i,tipoI,ubicacion,costoAdmin,numHabitaciones,id_Oferta);
-    log.info("Adicionando Contrato: " + inmueble);
+    log.info("Adicionando Inmueble: " + inmueble);
     return inmueble;
     }
     public long eliminarInmueblePorId (BigDecimal idI)
