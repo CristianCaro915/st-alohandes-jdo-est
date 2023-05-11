@@ -560,3 +560,56 @@ ORA-02291: restricción de integridad (ISIS2304D04202310.FK_C_ID_OFERTA) violada 
 13:43:10,052 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Consultando Habitaciones: 3 bebidas existentes
 13:43:11,913 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Consultando TOP20 de Habitaciones
 13:43:11,956 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Consultando TOP20 Habitaciones: 2 habitaciones existentes
+13:45:47,085 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazAlohandesApp] - Se encontró un archivo de configuración válido: Interfaz
+13:45:47,086 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazAlohandesApp] - Se aplica configuración indicada en el archivo de configuración
+13:45:47,099 (main) INFO  [uniandes.isis2304.parranderos.interfazApp.InterfazAlohandesApp] - Se encontró un archivo de configuración válido: Tablas BD
+13:46:20,895 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando Hotel: HHHHH
+13:46:21,171 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando Hotel: uniandes.isis2304.parranderos.negocio.Hotel@3b6c10f
+13:46:30,991 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Hotel por id: 11
+13:46:31,009 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Hotel por Id: 1 tuplas eliminadas
+13:47:27,023 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando hostal: HHHHH
+13:47:27,039 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando hostal: uniandes.isis2304.parranderos.negocio.Hostal@36fd6586
+13:47:36,031 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando hostal por id: 5
+13:47:36,044 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando hostal: 1
+13:48:23,493 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando PropietarioInmueble: PPPPP
+13:48:23,510 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando PropietarioInmueble: uniandes.isis2304.parranderos.negocio.PropietarioInmueble@6cc20b65
+13:48:31,423 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Empresa por id: 5
+13:48:31,440 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Empresa por id: 1 tuplas eliminadas
+13:49:26,324 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando empresa: EEEE
+13:49:26,338 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando empresa: uniandes.isis2304.parranderos.negocio.Empresa@1eb24d33
+13:49:36,062 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Empresa por id: 7
+13:49:36,078 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Empresa por id: 1 tuplas eliminadas
+13:50:06,127 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando Cliente: CCCC
+13:50:06,148 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando Cliente: uniandes.isis2304.parranderos.negocio.Cliente@5046cb7d
+13:50:14,200 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Cliente por id: 4
+13:50:14,225 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Cliente por id: 1 tuplas eliminadas
+13:52:07,686 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Consultando Ofertas
+13:52:07,705 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Actualizando Ofertas: 1 existentes
+13:52:45,595 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando oferta : 
+13:52:45,622 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando oferta: uniandes.isis2304.parranderos.negocio.Oferta@66a1d451
+13:53:05,054 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando oferta por id: 6
+13:53:05,066 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando oferta por id: 1 tuplas eliminadas
+13:54:06,621 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando contrato con fecha de inicio2023-05-11 11:00:00.0
+13:54:06,661 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando contrato con fecha de inicio: uniandes.isis2304.parranderos.negocio.Contrato@530ac679
+13:54:18,779 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando contrato por id: 6
+13:54:18,791 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando contrato por id: 6 tuplas eliminadas
+13:54:51,562 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando Inmueble de tipo: VIVIENDA
+13:54:51,583 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando Inmueble: uniandes.isis2304.parranderos.negocio.Inmueble@5f756425
+13:55:01,378 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Inmueble por id: 4
+13:55:01,392 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Inmueble por id: 1 tuplas eliminadas
+13:55:45,645 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando seguro : 2025-05-11 11:00:00.0
+13:55:45,726 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando seguro: uniandes.isis2304.parranderos.negocio.Seguro@525aef51
+13:55:57,396 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando seguro por id: 4
+13:55:57,419 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando seguro por id: 1 tuplas eliminadas
+13:57:18,510 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando habitacion de tipo SUITE
+13:57:18,521 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - adicionando habitacion por nombre: uniandes.isis2304.parranderos.negocio.Habitacion@1e207f9b
+13:57:32,615 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando habitacion por id: 4
+13:57:32,622 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando habitacion por id: 4 tuplas eliminadas
+13:58:16,365 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando servicio COCINETA
+13:58:16,386 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando servicio por nombre: uniandes.isis2304.parranderos.negocio.Servicio@5ab5abaa
+13:58:28,794 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando servicio por id: 8
+13:58:28,814 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando servicio por id: 8 tuplas eliminadas
+13:58:52,919 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando brindan : 1 2
+13:58:52,940 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Adicionando brindan: uniandes.isis2304.parranderos.negocio.Brindan@65b87841
+13:59:02,525 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Brindan por id: 1 2
+13:59:02,541 (AWT-EventQueue-0) INFO  [uniandes.isis2304.parranderos.negocio.Alohandes] - Eliminando Brindan por id: 1 tuplas eliminadas
