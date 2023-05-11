@@ -827,7 +827,7 @@ public class PersistenciaAlohandes {
 		return sqlSeguro.darSeguroPorId(pmf.getPersistenceManager(), idS);
 	}
     /* MANEJADOR DE HABITACION */
-    public Habitacion adicionarHabitacion(BigDecimal id_h, int tamanio, String tipoH, int precioFinal, String ubicacion, BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) 
+    public Habitacion adicionarHabitacion(BigDecimal id_h, BigDecimal tamanio, String tipoH, BigDecimal precioFinal, String ubicacion, BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) 
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();

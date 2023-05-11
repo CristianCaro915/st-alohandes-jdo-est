@@ -6,11 +6,11 @@ public interface VOHabitacion {
 
     public BigDecimal getIdHabitacion();
 
-    public int getTamano();
+    public BigDecimal getTamano();
 
     public String getTipoH();
 
-    public int getPrecioFinal();
+    public BigDecimal getPrecioFinal();
 
     public String getUbicacion();
 

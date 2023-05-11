@@ -1310,18 +1310,22 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
     	{
 			String idHHH = JOptionPane.showInputDialog (this, "id de la habitacion", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
 			String tama = JOptionPane.showInputDialog (this, "Tamaño de la habitacion", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
-            int tamanio = Integer.parseInt(tama);
+            int tamanioInt = Integer.parseInt(tama);
 			String tipoH = JOptionPane.showInputDialog (this, "Tipo de habitación?", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
             String precioF= JOptionPane.showInputDialog (this, "Precio final", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
-			int precioFinal=Integer.parseInt(precioF);
+			int precioFinalInt=Integer.parseInt(precioF);
 			String ubicacion = JOptionPane.showInputDialog (this, "ubicacion", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
 			String OfertaId=JOptionPane.showInputDialog (this, "id Oferta asociada", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
 			String ContratoId=JOptionPane.showInputDialog (this, "id Contrato asociado", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
 			String InmuebleId=JOptionPane.showInputDialog (this, "id Inmueble asociado", "Adicionar habitacion", JOptionPane.QUESTION_MESSAGE);
-            if (tamanio > 0 && tipoH != null 
-            && precioFinal > 0 && ubicacion != null && OfertaId!=null
+            if (tamanioInt > 0 && tipoH != null 
+            && precioFinalInt > 0 && ubicacion != null && OfertaId!=null
 			&& ContratoId!=null && InmuebleId!=null && idHHH!=null) 
     		{
+				long tamanioLong = Long.valueOf(tamanioInt);
+				BigDecimal tamanio = BigDecimal.valueOf(tamanioLong);
+				long precioFinalLong = Long.valueOf(precioFinalInt);
+				BigDecimal precioFinal = BigDecimal.valueOf(precioFinalLong);
 				long id_O= Long.parseLong(OfertaId);
 				long id_C= Long.parseLong(ContratoId);
 				long id_I= Long.parseLong(InmuebleId);

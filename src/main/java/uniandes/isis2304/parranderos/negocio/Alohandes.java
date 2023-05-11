@@ -115,7 +115,7 @@ public class Alohandes {
         return hostales;
     }
                                 /* HABITACION */
-    public Habitacion adicionarHabitacion(BigDecimal id_H,int tamano, String tipoH, int precioFinal,
+    public Habitacion adicionarHabitacion(BigDecimal id_H,BigDecimal tamano, String tipoH, BigDecimal precioFinal,
             String ubicacion, BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) {
         log.info("Adicionando habitacion de tipo " + tipoH);
         Habitacion resp = pp.adicionarHabitacion(id_H,tamano, tipoH, precioFinal, ubicacion,id_Oferta,id_Contrato,id_Inmueble );
