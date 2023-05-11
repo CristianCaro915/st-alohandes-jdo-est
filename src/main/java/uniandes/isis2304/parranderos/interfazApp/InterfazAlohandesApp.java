@@ -821,6 +821,29 @@ public class InterfazAlohandesApp extends JFrame implements ActionListener {
         }
         return resp;
 	}
+	public void modificarReservaColectiva(){
+		String numReserv = JOptionPane.showInputDialog (this, "Cuantas reservas desea modificar?", "Adicionar Oferta", JOptionPane.QUESTION_MESSAGE);
+		try
+		{
+			if(numReserv!=null)
+			{
+				Integer numReservas = Integer.parseInt(numReserv);
+				for(int i=0; i<numReservas;i++){
+					actualizarOfertaReservado();
+				}
+			}
+			else
+			{
+				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
+			}
+		}
+		catch(Exception e)
+		{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+	}
 	public void actualizarOfertaReservado(){
 		
 		try 
