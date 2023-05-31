@@ -41,7 +41,7 @@ public class Alohandes {
         return resp;
     }
     public long eliminarHotelPorId(BigDecimal idHotel) {
-        log.info("Eliminando Hotel por nombre: " + idHotel);
+        log.info("Eliminando Hotel por id: " + idHotel);
         long resp = pp.eliminarHotelPorId(idHotel);
         log.info("Eliminando Hotel por Id: " + resp + " tuplas eliminadas");
         return resp;
@@ -49,7 +49,7 @@ public class Alohandes {
     public Hotel darHotelPorNombre(String nombre) {
         log.info("Dar información de Hotel por nombre: " + nombre);
         Hotel hotel = pp.darHotelPorNombre(nombre);
-        log.info("Dar información de Hotel por nombre: " + hotel
+        log.info("Dar información de Hotel por nombre: " + hotel.getNombre()
                 + " Hotel con ese nombre existentes");
         return hotel;
     }
@@ -71,7 +71,7 @@ public class Alohandes {
         return voHoteles;
 	}
                                 /* HOSTAL */
-    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, int recepcion, Timestamp Cierre,
+    public Hostal adicionarHostal(BigDecimal id_hs,String nombre, BigDecimal recepcion, Timestamp Cierre,
             Timestamp Apertura, String tipo) {
         log.info("Adicionando hostal: " + nombre);
         Hostal hostal = pp.adicionarHostal(id_hs,nombre, recepcion, Cierre, Apertura, tipo);
@@ -115,7 +115,7 @@ public class Alohandes {
         return hostales;
     }
                                 /* HABITACION */
-    public Habitacion adicionarHabitacion(BigDecimal id_H,int tamano, String tipoH, int precioFinal,
+    public Habitacion adicionarHabitacion(BigDecimal id_H,BigDecimal tamano, String tipoH, BigDecimal precioFinal,
             String ubicacion, BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) {
         log.info("Adicionando habitacion de tipo " + tipoH);
         Habitacion resp = pp.adicionarHabitacion(id_H,tamano, tipoH, precioFinal, ubicacion,id_Oferta,id_Contrato,id_Inmueble );
@@ -338,11 +338,11 @@ public class Alohandes {
         return propietarioInmueble;
  	}
                                     /* Inmueble */
-    public Inmueble adicionarInmueble(BigDecimal id_i,String tipoI, String ubicacion, int costoAdmin,int numHabitaciones,BigDecimal id_Oferta) 
+    public Inmueble adicionarInmueble(BigDecimal id_i,String tipoI, String ubicacion, BigDecimal costoAdmin,BigDecimal numHabitaciones,BigDecimal id_Oferta) 
     {
-    log.info("Adicionando Contrato de tipo: " + tipoI);
+    log.info("Adicionando Inmueble de tipo: " + tipoI);
     Inmueble inmueble = pp.adicionarInmueble(id_i,tipoI,ubicacion,costoAdmin,numHabitaciones,id_Oferta);
-    log.info("Adicionando Contrato: " + inmueble);
+    log.info("Adicionando Inmueble: " + inmueble);
     return inmueble;
     }
     public long eliminarInmueblePorId (BigDecimal idI)
@@ -477,9 +477,9 @@ public class Alohandes {
         log.info ("Consultando Ofertas: " + ofertas.size() + " existentes");
         return ofertas;
 	}
-    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado){
+    public long actualizarOfertaReservado(BigDecimal idOferta, int reservado,String id_cliente){
         log.info ("Consultando Ofertas");
-        long rta = pp.actualizarOfertaReservado(idOferta,reservado);
+        long rta = pp.actualizarOfertaReservado(idOferta,reservado,id_cliente);
         log.info ("Actualizando Ofertas: " + rta + " existentes");
         return rta;
     }

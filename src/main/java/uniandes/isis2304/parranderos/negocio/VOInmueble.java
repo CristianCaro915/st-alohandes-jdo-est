@@ -10,9 +10,9 @@ public interface VOInmueble {
 
     public String getUbicacion();
 
-    public int getCostoAdmin();
+    public BigDecimal getCostoAdmin();
 
-    public int getNumHabitaciones();
+    public BigDecimal getNumHabitaciones();
 
     public BigDecimal getIdOferta();
 }

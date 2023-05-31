@@ -7,12 +7,12 @@ public class Inmueble implements VOInmueble{
     private BigDecimal id_I;
     private String tipoI;
     private String ubicacion;
-    private int costoAdmin;
-    private int numHabitaciones;
+    private BigDecimal costoAdmin;
+    private BigDecimal numHabitaciones;
     private BigDecimal id_Oferta;
 
-    public Inmueble(BigDecimal id_I, String tipoI, String ubicacion, int costoAdmin,
-            int numHabitaciones, BigDecimal id_Oferta) {
+    public Inmueble(BigDecimal id_I, String tipoI, String ubicacion, BigDecimal costoAdmin,
+    BigDecimal numHabitaciones, BigDecimal id_Oferta) {
         this.id_I = id_I;
         this.tipoI = tipoI;
         this.ubicacion = ubicacion;
@@ -38,16 +38,16 @@ public class Inmueble implements VOInmueble{
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    public int getCostoAdmin() {
+    public BigDecimal getCostoAdmin() {
         return costoAdmin;
     }
-    public void setCostoAdmin(int costoAdmin) {
+    public void setCostoAdmin(BigDecimal costoAdmin) {
         this.costoAdmin = costoAdmin;
     }
-    public int getNumHabitaciones() {
+    public BigDecimal getNumHabitaciones() {
         return numHabitaciones;
     }
-    public void setNumHabitaciones(int numHabitaciones) {
+    public void setNumHabitaciones(BigDecimal numHabitaciones) {
         this.numHabitaciones = numHabitaciones;
     }
     public BigDecimal getIdOferta() {

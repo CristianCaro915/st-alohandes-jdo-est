@@ -15,7 +15,7 @@ class SQLHabitacion {
         this.pp = pp;
     }
 
-    public long adicionarHabitacion(PersistenceManager pm, BigDecimal ID_H, int TAMANIO, String TIPOH, int PRECIOFINAL,
+    public long adicionarHabitacion(PersistenceManager pm, BigDecimal ID_H, BigDecimal TAMANIO, String TIPOH, BigDecimal PRECIOFINAL,
             String UBICACION, BigDecimal ID_OFERTA, BigDecimal ID_CONTRATO, BigDecimal ID_INMUEBLE) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHabitacion()
                 + "(ID_H, TAMANIO, TIPOH, PRECIOFINAL, UBICACION,ID_OFERTA,ID_CONTRATO,ID_INMUEBLE) values (?, ?, ?, ?, ?, ?, ?, ?)");

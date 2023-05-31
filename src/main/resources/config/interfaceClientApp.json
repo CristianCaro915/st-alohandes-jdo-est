@@ -68,6 +68,14 @@
             {
                 "label":"Eliminar reserva",
                 "event":"actualizarOfertaReservado"
+            },
+            {
+                "label":"Hacer reserva colectiva",
+                "event":"modificarReservaColectiva"
+            },
+            {
+                "label":"Cancelar reserva colectiva",
+                "event":"modificarReservaColectiva"
             }
         ]
       }

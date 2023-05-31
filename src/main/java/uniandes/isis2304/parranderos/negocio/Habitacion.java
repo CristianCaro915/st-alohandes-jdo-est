@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class Habitacion implements VOHabitacion{
 
     private BigDecimal id_H;
-    private int tamano;
+    private BigDecimal tamano;
     private String tipoH;
-    private int precioFinal;
+    private BigDecimal precioFinal;
     private String ubicacion;
     private BigDecimal id_Oferta;
     private BigDecimal id_Contrato;
@@ -15,16 +15,16 @@ public class Habitacion implements VOHabitacion{
 
     public Habitacion() {
         this.id_H = new BigDecimal(0);
-        this.tamano = 0;
+        this.tamano = new BigDecimal(0);
         this.tipoH = "";
-        this.precioFinal = 0;
+        this.precioFinal = new BigDecimal(0);
         this.ubicacion = "";
         this.id_Oferta = new BigDecimal(0);
         this.id_Contrato = new BigDecimal(0);
         this.id_Inmueble = new BigDecimal(0);
     }
 
-    public Habitacion(BigDecimal id_H, int tamano, String tipoH, int precioFinal, String ubicacion, 
+    public Habitacion(BigDecimal id_H, BigDecimal tamano, String tipoH, BigDecimal precioFinal, String ubicacion, 
     BigDecimal id_Oferta, BigDecimal id_Contrato, BigDecimal id_Inmueble) {
         this.id_H = id_H;
         this.tamano = tamano;
@@ -41,10 +41,10 @@ public class Habitacion implements VOHabitacion{
     public void seIdHabiacion(BigDecimal id_H) {
         this.id_H = id_H;
     }
-    public int getTamano() {
+    public BigDecimal getTamano() {
         return tamano;
     }
-    public void setTamano(int tamano) {
+    public void setTamano(BigDecimal tamano) {
         this.tamano = tamano;
     }
     public String getTipoH() {
@@ -53,10 +53,10 @@ public class Habitacion implements VOHabitacion{
     public void setTipoH(String tipoH) {
         this.tipoH = tipoH;
     }
-    public int getPrecioFinal() {
+    public BigDecimal getPrecioFinal() {
         return precioFinal;
     }
-    public void setPrecioFinal(int precioFinal) {
+    public void setPrecioFinal(BigDecimal precioFinal) {
         this.precioFinal = precioFinal;
     }
     public String getUbicacion() {

@@ -17,9 +17,9 @@ public class SQLInmueble {
     public SQLInmueble(PersistenciaAlohandes pp){
         this.pp=pp;
     }
-    public long adicionarInmueble (PersistenceManager pm, BigDecimal ID_I, String TIPOI, String UBICACION, int COSTOADMIN, int NUMHABITACIONES, BigDecimal ID_OFERTA) 
+    public long adicionarInmueble (PersistenceManager pm, BigDecimal ID_I, String TIPOI, String UBICACION, BigDecimal COSTOADMIN, BigDecimal NUMHABITACIONES, BigDecimal ID_OFERTA) 
 	{
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaInmueble () + "(ID_I, TIPOI, UBICACION, COSTOADMIN, NUMHABITACIONES, ID_OFERTA) values (?,?,?,?,?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaInmueble () + "(ID_I, TIPOI, UBICACION, COSTOADMIN, NUMHABITACIONES, ID_OFERTA) values (?,?,?,?,?,?)");
         q.setParameters(ID_I, TIPOI, UBICACION, COSTOADMIN, NUMHABITACIONES, ID_OFERTA);
         return (long) q.executeUnique();
 	}
@@ -58,19 +58,23 @@ public class SQLInmueble {
 	}
 	public List<Inmueble> darInmueblesAptos (PersistenceManager pm) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaInmueble () + " WHERE NUMHABITACIONES = APARTAMENTO");
+		String apto="APARTAMENTO";
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaInmueble () + " WHERE TIPOI = ?");
 		q.setResultClass(Inmueble.class);
+		q.setParameters(apto);
 		return (List<Inmueble>) q.executeList();
 	}
 	public List<Inmueble> darInmueblesViviendas (PersistenceManager pm) 
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaInmueble () + " WHERE NUMHABITACIONES = VIVIENDA");
+		String vivi="VIVIENDA";
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaInmueble () + " WHERE TIPOI = ?");
 		q.setResultClass(Inmueble.class);
+		q.setParameters(vivi);
 		return (List<Inmueble>) q.executeList();
 	}
 	public List<Object[]> darTop20Inmuebles(PersistenceManager pm)
     {
-        Query q = pm.newQuery(SQL, "SELECT i.TIPOI AS CATEGORIA, COUNT(i.ID_I) AS CANTIDAD FROM "+pp.darTablaHabitacion()+" i WHERE ROWNUM<20 GROUP BY i.TIPOI");
+        Query q = pm.newQuery(SQL, "SELECT i.TIPOI AS CATEGORIA, COUNT(i.ID_I) AS CANTIDAD FROM "+pp.darTablaInmueble()+" i WHERE ROWNUM<20 GROUP BY i.TIPOI");
 		return (List<Object[]>) q.executeList();
     }
 }
